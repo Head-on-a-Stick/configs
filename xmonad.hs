@@ -7,7 +7,7 @@ main = xmonad =<< xmobar defaultConfig {
       terminal           = "urxvtc"
     , modMask            = mod4Mask
     , borderWidth        = 1
-    , workspaces         = ["0","1","10","11","100","101","110","111"]
+    , workspaces         = ["1","2","3","4","5","6","7","8","9"]
     , normalBorderColor  = "#404040"
     , focusedBorderColor = "#00aacc"
     , startupHook        = startupHook defaultConfig <+> spawnOnce "urxvtd -q -f -o"
