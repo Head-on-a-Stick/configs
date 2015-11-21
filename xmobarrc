@@ -5,7 +5,7 @@ Config {
     , sepChar = "%"
     , alignSep = "}{"
     , position = Static { xpos = 0, ypos = 0, width = 1920, height = 30 }
-    , template = " %StdinReader% }%date%{"
+    , template = " %StdinReader%}{%date% "
     , commands =
          [ Run Battery       [ "--template" , "Battery: <acstatus>"
                              , "--Low"      , "25"        -- units: %
