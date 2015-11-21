@@ -12,7 +12,7 @@ Config {
                        , "--High"     , "75"        -- units: %
                        , "--low"      , "red"
                        , "--normal"   , "#60b48a"
-                       , "--high"     , "#705050"
+                       , "--high"     , "orange"
 
                        , "--" -- battery specific options
                               -- discharging status
