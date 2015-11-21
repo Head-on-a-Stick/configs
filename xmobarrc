@@ -10,7 +10,7 @@ Config {
          [ Run Battery       [ "--template" , "Battery: <acstatus>"
                              , "--Low"      , "25"        -- units: %
                              , "--High"     , "75"        -- units: %
-                             , "--low"      , "#dca3a3"
+                             , "--low"      , "red"
                              , "--normal"   , "#60b48a"
                              , "--high"     , "#705050"
 
