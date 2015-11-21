@@ -28,6 +28,7 @@ main                     = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey ba
     , handleEventHook    = fullscreenEventHook
     , manageHook         = composeAll [ isFullscreen                --> doFullFloat
                                       , className =? "Gimp"         --> doFloat
+                                      , className =? "Orage"        --> doFloat
 				      , className =? "Lxappearance" --> doFloat
 				      ]
 }
