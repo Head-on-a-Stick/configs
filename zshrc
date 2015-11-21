@@ -12,6 +12,8 @@ alias sudo='/usr/bin/sudo'
 alias su='/usr/bin/su'
 alias passwd='/usr/bin/passwd'
 alias spawn='sudo systemd-nspawn -bD /jessie'
+alias cp='cp -iv'
+alias mv='mv -iv'
 light(){xbacklight -set $1}
 colourtable() {
 	local fgc bgc vals seq0
