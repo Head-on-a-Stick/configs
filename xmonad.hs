@@ -22,7 +22,12 @@ main                         = xmonad =<< xmobar defaultConfig {
 }
     where
     myKeys (XConfig {modMask = modm}) = M.fromList $
-       [ ((0, xK_Menu), spawn "dmenu_run") ]
+       [ ((0, xK_Menu),    spawn "dmenu_run")
+       , ((0, 0x1008ff11), spawn "amixer set -c0 Master 5%- unmute")
+       , ((0, 0x1008ff12), spawn "amixer set -c0 Master toggle")
+       , ((0, 0x1008ff13), spawn "amixer set -c0 Master 5%+ unmute")
+       , ((0, 0x1008ff03), spawn "xbacklight -dec 1")
+       , ((0, 0x1008ff02), spawn "xbacklight -inc 1") ]
     myLayoutHook             = smartBorders  ( tiled ||| mtiled ||| full )
       where
         tiled                = named "Tiled" $ Tall 1 (3/100) (1/2)
