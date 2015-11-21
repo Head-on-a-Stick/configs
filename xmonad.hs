@@ -45,7 +45,7 @@ main                     = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey ba
         tiled            = named "Tiled" $ Tall 1 (3/100) (1/2)
 	mtiled           = named "Mirror Tiled" $ Mirror tiled
         full             = named "Full" $ Full
-    myPP                 = defaultPP { ppSep   = " <fc=#94bff3>•</fc> "
+    myPP                 = defaultPP { ppSep   = " <fc=#0000ff>•</fc> "
                                          , ppTitle = xmobarColor "#bfbfbf" "" . shorten 500
 					 , ppCurrent = xmobarColor "#f0dfaf" "" . wrap "[" "]"
 					 , ppLayout = xmobarColor "#60b48a" ""
