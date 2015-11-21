@@ -9,7 +9,7 @@ import XMonad.Config.Desktop
 
 baseConfig                   = desktopConfig
 
-main                         = xmonad =<< xmobar baseConfig {
+main                         = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey baseConfig {
       terminal               = "urxvtc"
     , modMask                = mod4Mask
     , borderWidth            = 2
@@ -26,7 +26,7 @@ main                         = xmonad =<< xmobar baseConfig {
     , keys                   = \c -> myKeys c `M.union` keys baseConfig c
     , layoutHook             = myLayoutHook
 }
-    where
+  where
     myKeys (XConfig {modMask = modm}) = M.fromList $
        [ ((0, xK_Menu),    spawn "dmenu_run")
        , ((0, 0x1008ff11), spawn "amixer set -c0 Master 5%- unmute")
@@ -39,3 +39,9 @@ main                         = xmonad =<< xmobar baseConfig {
         tiled                = named "Tiled" $ Tall 1 (3/100) (1/2)
 	mtiled               = named "Mirror Tiled" $ Mirror tiled
         full                 = named "Full" $ Full
+    myPP                     = defaultPP { ppSep   = " <fc=#0000ff>•</fc> "
+                                         , ppTitle = xmobarColor "#00ff00" "" . shorten 200
+					 , ppCurrent = xmobarColor "#ffff00" "" . wrap "<" ">"
+					 
+					 }
+    toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
