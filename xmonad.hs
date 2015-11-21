@@ -20,7 +20,7 @@ main                         = xmonad =<< statusBar "xmobar" myPP toggleStrutsKe
                                                       <+> spawnOnce "xsetroot -cursor_name left_ptr"
                                                       <+> spawnOnce "sh ~/.fehbg"
                                                       <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
-						      <+> spawnOnce "trayer --edge top --align right --margin 0 --widthtype percent --width 10 --height 30 --transparent true --alpha 0 --tint 0x000000 &"
+						      <+> spawnOnce "trayer --edge top --align right --margin 50 --widthtype request --height 30 --transparent true --alpha 0 --tint 0x000000 &"
 						      <+> spawnOnce "volumeicon &"
 						      <+> spawnOnce "xfce4-power-manager &"
     , keys                   = \c -> myKeys c `M.union` keys baseConfig c
@@ -40,8 +40,8 @@ main                         = xmonad =<< statusBar "xmobar" myPP toggleStrutsKe
 	mtiled               = named "Mirror Tiled" $ Mirror tiled
         full                 = named "Full" $ Full
     myPP                     = defaultPP { ppSep   = " <fc=#0000ff>•</fc> "
-                                         , ppTitle = xmobarColor "#00ff00" "" . shorten 200
-					 , ppCurrent = xmobarColor "#ffff00" "" . wrap "<" ">"
+                                         , ppTitle = xmobarColor "#00ff00" "" . shorten 500
+					 , ppCurrent = xmobarColor "#ffff00" "" . wrap "[" "]"
 					 
 					 }
     toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
