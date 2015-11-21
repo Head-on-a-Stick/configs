@@ -5,19 +5,22 @@ import qualified Data.Map as M
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Layout.Named
+import XMonad.Config.Desktop
 
-main                         = xmonad =<< xmobar defaultConfig {
+baseConfig                   = desktopConfig
+
+main                         = xmonad =<< xmobar baseConfig {
       terminal               = "urxvtc"
     , modMask                = mod4Mask
     , borderWidth            = 2
     , normalBorderColor      = "#404040"
     , focusedBorderColor     = "#00aacc"
-    , startupHook            = startupHook defaultConfig <+> spawnOnce "urxvtd -q -f -o"
+    , startupHook            = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
                                                          <+> spawnOnce "compton --backend glx --vsync opengl-mswc &"
                                                          <+> spawnOnce "xsetroot -cursor_name left_ptr"
                                                          <+> spawnOnce "sh ~/.fehbg"
                                                          <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
-    , keys                   = \c -> myKeys c `M.union` keys defaultConfig c
+    , keys                   = \c -> myKeys c `M.union` keys baseConfig c
     , layoutHook             = myLayoutHook
 }
     where
