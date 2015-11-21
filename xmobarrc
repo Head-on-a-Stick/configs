@@ -5,14 +5,14 @@ Config {
     , sepChar = "%"
     , alignSep = "}{"
     , position = Static { xpos = 0, ypos = 0, width = 1920, height = 25 }
-    , template = " %StdinReader%}{%locks%  %battery% <fc=#0000ff>•</fc> %date% "
+    , template = " %StdinReader%}{%locks%  %battery% <fc=#94bff3>•</fc> %date% "
     , commands =
          [ Run Battery       [ "--template" , "Battery: <acstatus>"
                              , "--Low"      , "25"        -- units: %
                              , "--High"     , "75"        -- units: %
-                             , "--low"      , "red"
-                             , "--normal"   , "green"
-                             , "--high"     , "orange"
+                             , "--low"      , "#dca3a3"
+                             , "--normal"   , "#60b48a"
+                             , "--high"     , "#705050"
 
                              , "--" -- battery specific options
                                        -- discharging status
@@ -22,7 +22,7 @@ Config {
                                        -- charged status
                                        , "-i"	, "<fc=#006000>Charged</fc>"
                              ] 30
-         , Run Date            "%d %B <fc=#0000ff>•</fc> <fc=#ffffff>%H:%M</fc>" "date" 100
+         , Run Date            "%d %B <fc=#94bff3>•</fc> <fc=#ffffff>%H:%M</fc>" "date" 100
          , Run StdinReader
 	 , Run Locks
          ]
