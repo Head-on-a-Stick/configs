@@ -4,7 +4,7 @@ Config {
     , fgColor = "#bfbfbf"
     , sepChar = "%"
     , alignSep = "}{"
-    , template = " %StdinReader% }{ %battery%  <fc=#0000ff>•</fc>  %date% "
+    , template = " %StdinReader% }%locks%{ %battery%  <fc=#0000ff>•</fc>  %date% "
     , commands =
          [ Run Battery       [ "--template" , "Battery: <acstatus>"
                              , "--Low"      , "25"        -- units: %
@@ -22,6 +22,7 @@ Config {
                                        , "-i"	, "<fc=#006000>Charged</fc>"
                              ] 30
          , Run Date            "%d %B  <fc=#0000ff>•</fc>  <fc=#ffffff>%H:%M</fc>" "date" 600
-         , Run StdinReader 
+         , Run StdinReader
+	 , Run Locks
          ]
 }
