@@ -16,10 +16,13 @@ main                         = xmonad =<< xmobar baseConfig {
     , normalBorderColor      = "#404040"
     , focusedBorderColor     = "#00aacc"
     , startupHook            = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
-                                                         <+> spawnOnce "compton --backend glx --vsync opengl-mswc &"
-                                                         <+> spawnOnce "xsetroot -cursor_name left_ptr"
-                                                         <+> spawnOnce "sh ~/.fehbg"
-                                                         <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
+                                                      <+> spawnOnce "compton --backend glx --vsync opengl-mswc &"
+                                                      <+> spawnOnce "xsetroot -cursor_name left_ptr"
+                                                      <+> spawnOnce "sh ~/.fehbg"
+                                                      <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
+						      <+> spawnOnce "trayer --edge top --align right --margin 0 --widthtype percent --width 10 --height 30 --transparent true --alpha 0 --tint 0x000000 &"
+						      <+> spawnOnce "volumeicon &"
+						      <+> spawnOnce "xfce4-power-manager &"
     , keys                   = \c -> myKeys c `M.union` keys baseConfig c
     , layoutHook             = myLayoutHook
 }
