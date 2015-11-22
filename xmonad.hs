@@ -21,8 +21,9 @@ main                     = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey ba
   , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
                                                 <+> spawnOnce "compton --backend glx --vsync opengl-mswc &"
                                                 <+> spawnOnce "xsetroot -cursor_name left_ptr"
-                                                <+> spawnOnce "sh ~/.fehbg"
                                                 <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
+                                                <+> spawnOnce "sh ~/.fehbg"
+                                                <+> spawnOnce "xset s 300 -dpms"
   , keys               = \c -> myKeys c `M.union` keys baseConfig c
   , layoutHook         = myLayoutHook
   , handleEventHook    = fullscreenEventHook
