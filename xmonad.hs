@@ -13,24 +13,24 @@ import XMonad.Hooks.ManageHelpers
 baseConfig               = desktopConfig
 
 main                     = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey baseConfig {
-      terminal           = "urxvtc"
-    , modMask            = mod4Mask
-    , borderWidth        = 2
-    , normalBorderColor  = "#404040"
-    , focusedBorderColor = "#00aacc"
-    , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
-                                                  <+> spawnOnce "compton --backend glx --vsync opengl-mswc &"
-                                                  <+> spawnOnce "xsetroot -cursor_name left_ptr"
-                                                  <+> spawnOnce "sh ~/.fehbg"
-                                                  <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
-    , keys               = \c -> myKeys c `M.union` keys baseConfig c
-    , layoutHook         = myLayoutHook
-    , handleEventHook    = fullscreenEventHook
-    , manageHook         = composeAll [ isFullscreen                --> doFullFloat
-                                      , className =? "Gimp"         --> doFloat
-                                      , className =? "Orage"        --> doFloat
-				      , className =? "Lxappearance" --> doFloat
-				      ]
+    terminal           = "urxvtc"
+  , modMask            = mod4Mask
+  , borderWidth        = 2
+  , normalBorderColor  = "#404040"
+  , focusedBorderColor = "#00aacc"
+  , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
+                                                <+> spawnOnce "compton --backend glx --vsync opengl-mswc &"
+                                                <+> spawnOnce "xsetroot -cursor_name left_ptr"
+                                                <+> spawnOnce "sh ~/.fehbg"
+                                                <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
+  , keys               = \c -> myKeys c `M.union` keys baseConfig c
+  , layoutHook         = myLayoutHook
+  , handleEventHook    = fullscreenEventHook
+  , manageHook         = composeAll [ isFullscreen                --> doFullFloat
+                                    , className =? "Gimp"         --> doFloat
+                                    , className =? "Orage"        --> doFloat
+			            , className =? "Lxappearance" --> doFloat
+		                    ]
 }
   where
     myKeys (XConfig {modMask = modm}) = M.fromList $
@@ -42,8 +42,8 @@ main                     = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey ba
        , ((0, 0x1008ff02), spawn "xbacklight -inc 1") ]
     myLayoutHook         = smartBorders  ( tiled ||| mtiled ||| full )
       where
-        tiled            = named "Tiled" $ Tall 1 (3/100) (1/2)
-	mtiled           = named "Mirror Tiled" $ Mirror tiled
+        tiled            = named "Tall" $ Tall 1 (3/100) (1/2)
+	mtiled           = named "Wide" $ Mirror tiled
         full             = named "Full" $ Full
     myPP                 = defaultPP { ppSep     = " <fc=#0000ff>•</fc> "
                                      , ppTitle   = xmobarColor "#bfbfbf" "" . shorten 500
