@@ -19,10 +19,10 @@ main                     = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey ba
     , normalBorderColor  = "#404040"
     , focusedBorderColor = "#00aacc"
     , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
-                                                      <+> spawnOnce "compton --backend glx --vsync opengl-mswc &"
-                                                      <+> spawnOnce "xsetroot -cursor_name left_ptr"
-                                                      <+> spawnOnce "sh ~/.fehbg"
-                                                      <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
+                                                  <+> spawnOnce "compton --backend glx --vsync opengl-mswc &"
+                                                  <+> spawnOnce "xsetroot -cursor_name left_ptr"
+                                                  <+> spawnOnce "sh ~/.fehbg"
+                                                  <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
     , keys               = \c -> myKeys c `M.union` keys baseConfig c
     , layoutHook         = myLayoutHook
     , handleEventHook    = fullscreenEventHook
@@ -45,9 +45,9 @@ main                     = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey ba
         tiled            = named "Tiled" $ Tall 1 (3/100) (1/2)
 	mtiled           = named "Mirror Tiled" $ Mirror tiled
         full             = named "Full" $ Full
-    myPP                 = defaultPP { ppSep   = " <fc=#0000ff>•</fc> "
-                                         , ppTitle = xmobarColor "#bfbfbf" "" . shorten 500
-					 , ppCurrent = xmobarColor "#f0dfaf" "" . wrap "[" "]"
-					 , ppLayout = xmobarColor "#60b48a" ""
-					 }
+    myPP                 = defaultPP { ppSep     = " <fc=#0000ff>•</fc> "
+                                     , ppTitle   = xmobarColor "#bfbfbf" "" . shorten 500
+			             , ppCurrent = xmobarColor "#f0dfaf" "" . wrap "[" "]"
+				     , ppLayout  = xmobarColor "#60b48a" ""
+				     }
     toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
