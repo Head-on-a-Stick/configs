@@ -1,3 +1,4 @@
+#!/bin/sh
 !URxvt.depth:			32
 URxvt.iconFile:			/usr/share/icons/Adwaita/16x16/apps/utilities-terminal.png
 URxvt.colorBD:			#ffffff
@@ -16,7 +17,7 @@ URxvt.perl-ext-common:		default,matcher
 URxvt.url-launcher:		/usr/bin/firefox
 URxvt.matcher.button:		3
 URxvt.scrollBar:		false
-URxvt.fading:			20
+URxvt.fading:			25
 *.foreground:			#bfbfbf
 *.background:			#000000
 *.cursorColor:			#00ff00
