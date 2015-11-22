@@ -17,7 +17,7 @@ main                     = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey ba
   , modMask            = mod4Mask
   , borderWidth        = 2
   , normalBorderColor  = "#404040"
-  , focusedBorderColor = "#00aacc"
+  , focusedBorderColor = "#4084d6"
   , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
                                                 <+> spawnOnce "compton --backend glx --vsync opengl-mswc &"
                                                 <+> spawnOnce "xsetroot -cursor_name left_ptr"
@@ -45,7 +45,7 @@ main                     = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey ba
         tiled            = named "Tall" $ Tall 1 (3/100) (1/2)
 	mtiled           = named "Wide" $ Mirror tiled
         full             = named "Full" $ Full
-    myPP                 = defaultPP { ppSep     = " <fc=#0000ff>•</fc> "
+    myPP                 = defaultPP { ppSep     = " <fc=#4084d6>•</fc> "
                                      , ppTitle   = xmobarColor "#bfbfbf" "" . shorten 500
 			             , ppCurrent = xmobarColor "#f0dfaf" "" . wrap "[" "]"
 				     , ppLayout  = xmobarColor "#60b48a" ""
