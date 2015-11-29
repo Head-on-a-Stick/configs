@@ -10,20 +10,19 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
 
 
-baseConfig               = desktopConfig
+baseConfig             = desktopConfig
 
-main                     = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey baseConfig {
+main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey baseConfig {
     terminal           = "urxvtc"
   , modMask            = mod4Mask
-  , borderWidth        = 2
+  , borderWidth        = 1
   , normalBorderColor  = "#404040"
   , focusedBorderColor = "#4084d6"
   , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
-                                                <+> spawnOnce "compton --backend glx --paint-on-overlay --vsync opengl-mswc &"
                                                 <+> spawnOnce "xsetroot -cursor_name left_ptr"
                                                 <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
-                                                <+> spawnOnce "sh ~/.fehbg"
                                                 <+> spawnOnce "xset s 300 -dpms"
+                                                <+> spawnOnce "nitrogen --restore"
   , keys               = \c -> myKeys c `M.union` keys baseConfig c
   , layoutHook         = myLayoutHook
   , handleEventHook    = fullscreenEventHook
@@ -35,18 +34,17 @@ main                     = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey ba
 }
   where
     myKeys (XConfig {modMask = modm}) = M.fromList $
-       [ ((0, xK_Menu),    spawn "dmenu_run")
-       , ((0, 0x1008ff11), spawn "amixer set -c0 Master 5%- unmute")
-       , ((0, 0x1008ff12), spawn "amixer set -c0 Master toggle")
-       , ((0, 0x1008ff13), spawn "amixer set -c0 Master 5%+ unmute")
-       , ((0, 0x1008ff03), spawn "xbacklight -dec 1")
-       , ((0, 0x1008ff02), spawn "xbacklight -inc 1") ]
+       [ ((0, xK_Menu),    spawn "dmenu_run -fn 'Cantarell:Bold:size=8' -b -nb '#000000' -nf '#808080' -sb '#000000' -sf '#ffffff'" ) 
+       , ((0, 0x1008ff11), spawn "mixerctl outputs.master=-10,-10;mixerctl outputs.master.mute=off" )
+       , ((0, 0x1008ff12), spawn "mixerctl -t outputs.master.mute" )
+       , ((0, 0x1008ff13), spawn "mixerctl outputs.master=+10,+10;mixerctl outputs.master.mute=off" )
+       ]
     myLayoutHook         = smartBorders  ( tiled ||| mtiled ||| full )
       where
         tiled            = named "Tall" $ Tall 1 (3/100) (1/2)
 	mtiled           = named "Wide" $ Mirror tiled
         full             = named "Full" $ Full
-    myPP                 = defaultPP { ppSep     = " <fc=#4084d6>•</fc> "
+    myPP                 = defaultPP { ppSep     = " <fc=#4084d6>:</fc> "
                                      , ppTitle   = xmobarColor "#bfbfbf" "" . shorten 500
 			             , ppCurrent = xmobarColor "#f0dfaf" "" . wrap "[" "]"
 				     , ppLayout  = xmobarColor "#60b48a" ""
