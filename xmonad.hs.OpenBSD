@@ -19,7 +19,6 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
   , normalBorderColor  = "#404040"
   , focusedBorderColor = "#4084d6"
   , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
-                                                <+> spawnOnce "compton --backend glx --paint-on-overlay --vsync opengl-mswc &"
                                                 <+> spawnOnce "xsetroot -cursor_name left_ptr"
                                                 <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
                                                 <+> spawnOnce "xset s 300 -dpms"
@@ -35,7 +34,7 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
 }
   where
     myKeys (XConfig {modMask = modm}) = M.fromList $
-       [ ((0, xK_Menu),    spawn "dmenu_run -fn 'xft:Cantarell:Bold:size=8' -b -nb '#000000' -nf '#808080' -sb '#000000' -sf '#ffffff'" ) 
+       [ ((0, xK_Menu),    spawn "dmenu_run -fn 'Cantarell:Bold:size=8' -b -nb '#000000' -nf '#808080' -sb '#000000' -sf '#ffffff'" ) 
        , ((0, 0x1008ff11), spawn "mixerctl outputs.master=-10,-10;mixerctl outputs.master.mute=off" )
        , ((0, 0x1008ff12), spawn "mixerctl -t outputs.master.mute" )
        , ((0, 0x1008ff13), spawn "mixerctl outputs.master=+10,+10;mixerctl outputs.master.mute=off" )
