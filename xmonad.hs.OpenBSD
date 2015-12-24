@@ -21,21 +21,23 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
   , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
                                                 <+> spawnOnce "xsetroot -cursor_name left_ptr"
                                                 <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
-                                                <+> spawnOnce "xset s 300 -dpms"
-                                                <+> spawnOnce "compton --backend glx --paint-on-overlay --vsync opengl-mswc &"
-                                                <+> spawnOnce "nitrogen --restore"
+                                                <+> spawnOnce "xset s 300 -dpms +fp /usr/local/share/fonts/BlockZone fp rehash"
+                                                <+> spawnOnce "feh --randomize --bg-max /home/empty/Pictures/nhm"
+						<+> spawnOnce "compton --backend glx --paint-on-overlay --vsync opengl-mswc"
   , keys               = \c -> myKeys c `M.union` keys baseConfig c
   , layoutHook         = myLayoutHook
   , handleEventHook    = fullscreenEventHook
-  , manageHook         = composeAll [ isFullscreen                --> doFullFloat
-                                    , className =? "Gimp"         --> doFloat
-                                    , className =? "Orage"        --> doFloat
-			            , className =? "Lxappearance" --> doFloat
+  , manageHook         = composeAll [ isFullscreen                  --> doFullFloat
+                                    , className =? "Gimp"           --> doFloat
+                                    , className =? "Orage"          --> doFloat
+			            , className =? "Lxappearance"   --> doFloat
+				    , className =? "SDL_App"        --> doFloat
+				    , className =? "Xkcd_viewer.pl" --> doFloat
 		                    ]
 }
   where
     myKeys (XConfig {modMask = modm}) = M.fromList $
-       [ ((0, xK_Menu),    spawn "dmenu_run -fn 'Cantarell:Bold:size=8' -b -nb '#000000' -nf '#808080' -sb '#000000' -sf '#ffffff'" ) 
+       [ ((0, xK_Menu),    spawn "dmenu_run -fn 'xft:Cantarell:Bold:size=9' -b -nb '#000000' -nf '#808080' -sb '#000000' -sf '#ffffff'" ) 
        , ((0, 0x1008ff11), spawn "mixerctl outputs.master=-10,-10;mixerctl outputs.master.mute=off" )
        , ((0, 0x1008ff12), spawn "mixerctl -t outputs.master.mute" )
        , ((0, 0x1008ff13), spawn "mixerctl outputs.master=+10,+10;mixerctl outputs.master.mute=off" )
