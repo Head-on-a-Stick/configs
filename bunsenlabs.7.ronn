@@ -51,7 +51,7 @@ Probably. If you find any, please report them to the bugtacker (https://www.buns
 
 ##SEE ALSO
 
-systemctl(1), hostnamectl(1), hostname(5), locale.conf(5), timedatectl(1), timezone(3), hwclock(8), fstab(5), crypttab(5), apt-get(8), aptitude(8), appt.conf(5), update-grub(8), modules-load.d(5), modprobe.d(5), systemd(1)
+systemctl(1), hostnamectl(1), hostname(5), locale.conf(5), timedatectl(1), timezone(3), hwclock(8), fstab(5), crypttab(5), apt-get(8), aptitude(8), apt.conf(5), update-grub(8), modules-load.d(5), modprobe.d(5), systemd(1)
 
 ##AUTHOR
 
