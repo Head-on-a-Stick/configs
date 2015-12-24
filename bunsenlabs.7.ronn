@@ -43,7 +43,7 @@ Most modules should be loaded on-demand. Modules to be unconditionally loaded at
 
 ##SOURCES.LIST
 
-BunsenLabs is based on Debian stable and Ubuntu PPAs, Debian testing/unstable/experimental repositories should not be added to /etc/apt/sources.list or any files in /etc/apt/sources.list.d/.
+BunsenLabs is based on Debian stable and so Ubuntu PPAs & Debian testing/unstable/experimental repositories should not be added to /etc/apt/sources.list or any files in /etc/apt/sources.list.d/.
 
 ##SEE ALSO
 
