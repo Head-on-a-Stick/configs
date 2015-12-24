@@ -90,7 +90,7 @@
 
 <h2 id="SYSTEM-SERVICES">SYSTEM SERVICES</h2>
 
-<p>System services to be started at boot can be enabled using <code>systemctl enable &lt;name></code>. To view available services, use <code>systemctl list-unit-files</code>. For the graphical desktop, use <code>/usr/lib/i386-linux-gnu/openbox-xdg-autostart --list</code> or <code>/usr/lib/x86_64-linux-gnu/openbox-xdg-autostart --list</code> to list any XDG autostarted programs, and $HOME/.config/openbox/autostart for the X session.</p>
+<p>System services to be started at boot can be enabled using <code>systemctl enable &lt;name></code>. To view available services, use <code>systemctl list-unit-files</code>. For the graphical desktop, use <code>/usr/lib/i386-linux-gnu/openbox-xdg-autostart --list</code> or <code>/usr/lib/x86_64-linux-gnu/openbox-xdg-autostart --list</code> to list any XDG autostarted programs, and see $HOME/.config/openbox/autostart for all other applications.</p>
 
 <h2 id="HOSTNAME">HOSTNAME</h2>
 
@@ -98,16 +98,15 @@
 
 <h2 id="LOCALIZATION">LOCALIZATION</h2>
 
-<p>To set the system locales, run <code>dpkg-reconfigure locales</code> and select the locale(s) you wish to generate. If ssh access is required, it is recommended to choose "None" as the default locale. Alternatively, enabled the desired locales in /etc/locale.gen and generate them with <code>locale-gen</code>. The system-wide locale to be used can be configured in /etc/locale.conf. These settings can be overridden on a per-user basis by keeping a user-specific locale.conf in $HOME/.config/locale.x.conf. The user-specific file will take precedence if it exists.</p>
+<p>To set the system locale(s), run <code>dpkg-reconfigure locales</code> and select the locale(s) you wish to generate. If ssh access is required, it is recommended to choose "None" as the default locale. Alternatively, enabled the desired locales in /etc/locale.gen and generate them with <code>locale-gen</code>. The system-wide locale to be used can be configured in /etc/locale.conf. These settings can be overridden on a per-user basis by keeping a user-specific locale.conf in $HOME/.config/locale.x.conf. The user-specific file will take precedence if it exists.</p>
 
 <h2 id="TIME">TIME</h2>
 
-<p>The local time is configured by calling <code>timedatectl set-timezone &lt;Region/City&gt;</code>. A relative symlink is then created from /etc/localtime to the correct zoneinfo file under /usr/share/zoneinfo/.
-The real-time clock, which keeps track of time when the computer is off, can be configured to either be in UTC or in local time by calling <code>timedatectl set-local-rtc &lt;false|true></code>. The default is UTC.</p>
+<p>The local time is configured by calling <code>timedatectl set-timezone &lt;Region/City&gt;</code>. A relative symlink is then created from /etc/localtime to the correct zoneinfo file under /usr/share/zoneinfo/. The real-time clock, which keeps track of time when the computer is off, can be configured to either be in UTC or in local time by calling <code>timedatectl set-local-rtc &lt;false|true></code>. The default is UTC.</p>
 
 <h2 id="FILE-SYSTEMS">FILE SYSTEMS</h2>
 
-<p>File systems are configured in /etc/fstab, and encryptoion mappings are configured in /etc/crypttab.</p>
+<p>File systems are configured in /etc/fstab, and encryption mappings are configured in /etc/crypttab.</p>
 
 <h2 id="PACKAGE-MANAGERS">PACKAGE MANAGERS</h2>
 
@@ -123,7 +122,7 @@ The real-time clock, which keeps track of time when the computer is off, can be 
 
 <h2 id="SOURCES-LIST">SOURCES.LIST</h2>
 
-<p>BunsenLabs is based on Debian stable and Ubuntu PPAs, Debian testing/unstable or experimental repositories should not be added to /etc/apt/sources.list.</p>
+<p>BunsenLabs is based on Debian stable and Ubuntu PPAs, Debian testing/unstable/experimental repositories should not be added to /etc/apt/sources.list or any files in /etc/apt/sources.list.d/.</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
