@@ -37,10 +37,13 @@ GRUB\'s configuration is generated from /etc/default/grub by \fBupdate\-grub\fR\
 Most modules should be loaded on\-demand\. Modules to be unconditionally loaded at boot can be specified in /etc/modules\-load\.d/, and modules to be blacklisted from automatically loading can be configured in /etc/modprobe\.d/\.
 .
 .SH "SOURCES\.LIST"
-BunsenLabs is based on Debian stable and so Ubuntu PPAs & Debian testing/unstable/experimental repositories should not be added to /etc/apt/sources\.list or any files in /etc/apt/sources\.list\.d/\.
+BunsenLabs is based on Debian stable and so Ubuntu PPAs & Debian testing/unstable/experimental repositories should \fInot\fR be added to /etc/apt/sources\.list or any files in /etc/apt/sources\.list\.d/\.
+.
+.SH "BUGS"
+Probably\. If you find any, please report them to the bugtacker (https://www\.bunsenlabs\.org/resources\.html#core\-packages\-and\-bug\-reports)\.
 .
 .SH "SEE ALSO"
 systemctl(1), hostnamectl(1), hostname(5), locale\.conf(5), timedatectl(1), timezone(3), hwclock(8), fstab(5), crypttab(5), apt\-get(8), aptitude(8), appt\.conf(5), update\-grub(8), modules\-load\.d(5), modprobe\.d(5), systemd(1)
 .
-.SH "AUTHORS"
+.SH "AUTHOR"
 Written by Matthew T Hoare
