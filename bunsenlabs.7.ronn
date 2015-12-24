@@ -1,8 +1,5 @@
 BunsenLabs - A light-weight and easily customizable GNU/Linux distribution based on the Openbox window manager.
 ====
-##NAME
-
-BunsenLabs - basic configuration
 
 ##SYNOPSIS
 
