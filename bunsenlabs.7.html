@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>BunsenLabs(7) - A light-weight and easily customizable GNU/Linux distribution based on the Openbox window manager.</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#NAME">NAME</a>
+    <a href="#SYNOPSIS">SYNOPSIS</a>
+    <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#SYSTEM-SERVICES">SYSTEM SERVICES</a>
+    <a href="#HOSTNAME">HOSTNAME</a>
+    <a href="#LOCALIZATION">LOCALIZATION</a>
+    <a href="#TIME">TIME</a>
+    <a href="#FILE-SYSTEMS">FILE SYSTEMS</a>
+    <a href="#PACKAGE-MANAGERS">PACKAGE MANAGERS</a>
+    <a href="#BOOT-LOADER">BOOT LOADER</a>
+    <a href="#MODULES">MODULES</a>
+    <a href="#SOURCES-LIST">SOURCES.LIST</a>
+    <a href="#SEE-ALSO">SEE ALSO</a>
+    <a href="#AUTHORS">AUTHORS</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>BunsenLabs(7)</li>
+    <li class='tc'></li>
+    <li class='tr'>BunsenLabs(7)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>BunsenLabs</code> - <span class="man-whatis">A light-weight and easily customizable GNU/Linux distribution based on the Openbox window manager.</span>
+</p>
+
+<h2 id="NAME">NAME</h2>
+
+<p>BunsenLabs - basic configuration</p>
+
+<h2 id="SYNOPSIS">SYNOPSIS</h2>
+
+<p>Overview of the basic configuration of BunsenLabs.</p>
+
+<h2 id="DESCRIPTION">DESCRIPTION</h2>
+
+<p>BunsenLabs Linux is a distribution offering a light-weight and easily customizable Openbox desktop. This man page gives a brief overview of the configuration files.</p>
+
+<h2 id="SYSTEM-SERVICES">SYSTEM SERVICES</h2>
+
+<p>System services to be started at boot can be enabled using <code>systemctl enable &lt;name></code>. To view available services, use <code>systemctl list-unit-files</code>. For the graphical desktop, use <code>/usr/lib/i386-linux-gnu/openbox-xdg-autostart --list</code> or <code>/usr/lib/x86_64-linux-gnu/openbox-xdg-autostart --list</code> to list any XDG autostarted programs, and $HOME/.config/openbox/autostart for the X session.</p>
+
+<h2 id="HOSTNAME">HOSTNAME</h2>
+
+<p>The hostname of the machine can be set using <code>hostnamectl set-hostname &lt;hostname></code>. It will then be written to /etc/hostname.</p>
+
+<h2 id="LOCALIZATION">LOCALIZATION</h2>
+
+<p>To set the system locales, run <code>dpkg-reconfigure locales</code> and select the locale(s) you wish to generate. If ssh access is required, it is recommended to choose "None" as the default locale. Alternatively, enabled the desired locales in /etc/locale.gen and generate them with <code>locale-gen</code>. The system-wide locale to be used can be configured in /etc/locale.conf. These settings can be overridden on a per-user basis by keeping a user-specific locale.conf in $HOME/.config/locale.x.conf. The user-specific file will take precedence if it exists.</p>
+
+<h2 id="TIME">TIME</h2>
+
+<p>The local time is configured by calling <code>timedatectl set-timezone &lt;Region/City&gt;</code>. A relative symlink is then created from /etc/localtime to the correct zoneinfo file under /usr/share/zoneinfo/.
+The real-time clock, which keeps track of time when the computer is off, can be configured to either be in UTC or in local time by calling <code>timedatectl set-local-rtc &lt;false|true></code>. The default is UTC.</p>
+
+<h2 id="FILE-SYSTEMS">FILE SYSTEMS</h2>
+
+<p>File systems are configured in /etc/fstab, and encryptoion mappings are configured in /etc/crypttab.</p>
+
+<h2 id="PACKAGE-MANAGERS">PACKAGE MANAGERS</h2>
+
+<p>Both aptitude and apt-get are configured in /etc/apt/apt.conf.</p>
+
+<h2 id="BOOT-LOADER">BOOT LOADER</h2>
+
+<p>GRUB's configuration is generated from /etc/default/grub by <code>update-grub</code>.</p>
+
+<h2 id="MODULES">MODULES</h2>
+
+<p>Most modules should be loaded on-demand. Modules to be unconditionally loaded at boot can be specified in /etc/modules-load.d/, and modules to be blacklisted from automatically loading can be configured in /etc/modprobe.d/.</p>
+
+<h2 id="SOURCES-LIST">SOURCES.LIST</h2>
+
+<p>BunsenLabs is based on Debian stable and Ubuntu PPAs, Debian testing/unstable or experimental repositories should not be added to /etc/apt/sources.list.</p>
+
+<h2 id="SEE-ALSO">SEE ALSO</h2>
+
+<p><span class="man-ref">systemctl<span class="s">(1)</span></span>, <span class="man-ref">hostnamectl<span class="s">(1)</span></span>, <span class="man-ref">hostname<span class="s">(5)</span></span>, <span class="man-ref">locale.conf<span class="s">(5)</span></span>, <span class="man-ref">timedatectl<span class="s">(1)</span></span>, <span class="man-ref">timezone<span class="s">(3)</span></span>, <span class="man-ref">hwclock<span class="s">(8)</span></span>, <span class="man-ref">fstab<span class="s">(5)</span></span>, <span class="man-ref">crypttab<span class="s">(5)</span></span>, <span class="man-ref">apt-get<span class="s">(8)</span></span>, <span class="man-ref">aptitude<span class="s">(8)</span></span>, <span class="man-ref">appt.conf<span class="s">(5)</span></span>, <span class="man-ref">update-grub<span class="s">(8)</span></span>, <span class="man-ref">modules-load.d<span class="s">(5)</span></span>, <span class="man-ref">modprobe.d<span class="s">(5)</span></span>, <span class="man-ref">systemd<span class="s">(1)</span></span></p>
+
+<h2 id="AUTHORS">AUTHORS</h2>
+
+<p>Written by Matthew T Hoare</p>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'></li>
+    <li class='tc'>December 2015</li>
+    <li class='tr'>BunsenLabs(7)</li>
+  </ol>
+
+  </div>
+</body>
+</html>
