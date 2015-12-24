@@ -19,7 +19,7 @@ The hostname of the machine can be set using `hostnamectl set-hostname <hostname
 
 ##LOCALIZATION
 
-To set the system locale(s), run `dpkg-reconfigure locales` and select the locale(s) you wish to generate. If ssh access is required, it is recommended to choose "None" as the default locale. Alternatively, enabled the desired locales in /etc/locale.gen and generate them with `locale-gen`. The system-wide locale to be used can be configured in /etc/locale.conf. These settings can be overridden on a per-user basis by keeping a user-specific locale.conf in $HOME/.config/locale.x.conf. The user-specific file will take precedence if it exists.
+To set the system locale(s), run `dpkg-reconfigure locales` and select the locale(s) you wish to generate. If ssh access is required, it is recommended to choose "None" as the default locale. Alternatively, enabled the desired locales in /etc/locale.gen and generate them with `locale-gen`. The system-wide locale to be used can be configured in /etc/locale.conf. These settings can be overridden on a per-user basis by keeping a user-specific locale.conf in $HOME/.config/locale.conf. The user-specific file will take precedence if it exists.
 
 ##TIME
 
