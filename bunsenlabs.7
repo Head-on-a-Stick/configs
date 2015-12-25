@@ -16,31 +16,31 @@ BunsenLabs Linux is a distribution offering a light\-weight and easily customiza
 System services to be started at boot can be enabled using \fBsystemctl enable <name>\fR\. To view available services, use \fBsystemctl list\-unit\-files\fR\. For the graphical desktop, use \fB/usr/lib/i386\-linux\-gnu/openbox\-xdg\-autostart \-\-list\fR or \fB/usr/lib/x86_64\-linux\-gnu/openbox\-xdg\-autostart \-\-list\fR to list any XDG autostarted programs, and see $HOME/\.config/openbox/autostart for all other applications\.
 .
 .SH "HOSTNAME"
-The hostname of the machine can be set using \fBhostnamectl set\-hostname <hostname>\fR\. It will then be written to /etc/hostname\.
+The hostname of the machine can be set using \fBhostnamectl set\-hostname <hostname>\fR\. It will then be written to /etc/hostname
 .
 .SH "LOCALIZATION"
-To set the system locale(s), run \fBdpkg\-reconfigure locales\fR and select the locale(s) you wish to generate\. If ssh access is required, it is recommended to choose "None" as the default locale\. Alternatively, enabled the desired locales in /etc/locale\.gen and generate them with \fBlocale\-gen\fR\. The system\-wide locale to be used can be configured in /etc/locale\.conf\. These settings can be overridden on a per\-user basis by keeping a user\-specific locale\.conf in $HOME/\.config/locale\.conf\. The user\-specific file will take precedence if it exists\.
+To set the system locale(s), run \fBdpkg\-reconfigure locales\fR and select the locale(s) you wish to generate\. If ssh access is required, it is recommended to choose "None" as the default locale\. Alternatively, enable the desired locales in /etc/locale\.gen and generate them with \fBlocale\-gen\fR\. The system\-wide locale to be used can be configured in /etc/locale\.conf These settings can be overridden on a per\-user basis by keeping a user\-specific locale\.conf in $HOME/\.config/locale\.conf The user\-specific file will take precedence if it exists\.
 .
 .SH "TIME"
-The local time is configured by calling \fBtimedatectl set\-timezone <Region/City>\fR\. A relative symlink is then created from /etc/localtime to the correct zoneinfo file under /usr/share/zoneinfo/\. The real\-time clock, which keeps track of time when the computer is off, can be configured to either be in UTC or in local time by calling \fBtimedatectl set\-local\-rtc <false|true>\fR\. The default is UTC\.
+The local time is configured by calling \fBtimedatectl set\-timezone <Region/City>\fR\. A relative symlink is then created from /etc/localtime to the correct zoneinfo file under /usr/share/zoneinfo/ The real\-time clock, which keeps track of time when the computer is off, can be configured to either be in UTC or in local time by calling \fBtimedatectl set\-local\-rtc <false|true>\fR\. The default is UTC\.
 .
 .SH "FILE SYSTEMS"
-File systems are configured in /etc/fstab, and encryption mappings are configured in /etc/crypttab\.
+File systems are configured in /etc/fstab and encryption mappings are configured in /etc/crypttab
 .
 .SH "PACKAGE MANAGERS"
-Both aptitude and apt\-get are configured in /etc/apt/apt\.conf\.
+Both aptitude and apt\-get are configured in /etc/apt/apt\.conf
 .
 .SH "BOOT LOADER"
-GRUB\'s configuration is generated from /etc/default/grub by \fBupdate\-grub\fR\.
+GRUB\'s configuration is generated from /etc/default/grub by \fBupdate\-grub\fR
 .
 .SH "MODULES"
-Most modules should be loaded on\-demand\. Modules to be unconditionally loaded at boot can be specified in /etc/modules\-load\.d/, and modules to be blacklisted from automatically loading can be configured in /etc/modprobe\.d/\.
+Most modules should be loaded on\-demand\. Modules to be unconditionally loaded at boot can be specified in /etc/modules\-load\.d/, and modules to be blacklisted from automatically loading can be configured in /etc/modprobe\.d/
 .
 .SH "SOURCES\.LIST"
-BunsenLabs is based on Debian stable and so Ubuntu PPAs & Debian testing/unstable/experimental repositories should \fInot\fR be added to /etc/apt/sources\.list or any files in /etc/apt/sources\.list\.d/\.
+BunsenLabs is based on Debian stable and so Ubuntu PPAs & Debian testing/unstable/experimental repositories should \fInot\fR be added to /etc/apt/sources\.list or any files in /etc/apt/sources\.list\.d/
 .
 .SH "BUGS"
-Probably\. If you find any, please report them to the bugtacker (https://www\.bunsenlabs\.org/resources\.html#core\-packages\-and\-bug\-reports)\.
+Probably\. If you find any, please report them to the bugtacker at https://www\.bunsenlabs\.org/resources\.html#core\-packages\-and\-bug\-reports
 .
 .SH "SEE ALSO"
 systemctl(1), hostnamectl(1), hostname(5), locale\.conf(5), timedatectl(1), timezone(3), hwclock(8), fstab(5), crypttab(5), apt\-get(8), aptitude(8), apt\.conf(5), update\-grub(8), modules\-load\.d(5), modprobe\.d(5), systemd(1)
