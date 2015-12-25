@@ -39,7 +39,7 @@ GRUB's configuration is generated from /etc/default/grub by `update-grub`
 
 ##MODULES
 
-Most modules should be loaded on-demand. Modules to be unconditionally loaded at boot can be specified in /etc/modules-load.d/, and modules to be blacklisted from automatically loading can be configured in /etc/modprobe.d/
+Most modules should be loaded on-demand. Modules to be unconditionally loaded at boot can be specified in /etc/modules-load.d/ and modules to be blacklisted from automatically loading can be configured in /etc/modprobe.d/
 
 ##SOURCES.LIST
 
