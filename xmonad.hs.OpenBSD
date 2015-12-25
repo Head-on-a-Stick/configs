@@ -24,6 +24,7 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
                                                 <+> spawnOnce "xset s 300 -dpms +fp /usr/local/share/fonts/BlockZone fp rehash"
                                                 <+> spawnOnce "feh --randomize --bg-max /home/empty/Pictures/nhm"
 						<+> spawnOnce "compton --backend glx --paint-on-overlay --vsync opengl-mswc"
+						<+> spawnOnce "export LC_CTYPE=en_GB.UTF-8"
   , keys               = \c -> myKeys c `M.union` keys baseConfig c
   , layoutHook         = myLayoutHook
   , handleEventHook    = fullscreenEventHook
