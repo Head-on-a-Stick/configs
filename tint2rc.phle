@@ -1,0 +1,984 @@
+# ======================================================================
+# commented_CB11_BL8-rc1.tint2rc
+# ----------------------------------------------------------------------
+# a basic tint2 configuration file,
+# heavily commented, and including defaults
+# from both CrunchBang 11 Waldorf's,
+# and BunsenLabs 8 Hydrogen (RC1)'s, tint2rc files
+# ======================================================================
+# for more info about tint2, see
+#     up to, and including, v. 0.11:
+#         https://code.google.com/p/tint2/
+#         https://code.google.com/p/tint2/wiki/Configure
+#     starting from  v. 0.12:
+#         https://gitlab.com/o9000/tint2
+#         https://gitlab.com/o9000/tint2/wikis/Configure
+#         https://gitlab.com/o9000/tint2/wikis/FAQ
+# ======================================================================
+# CrunchBang Forums - Tips, Tricks & Scripts: tint2 configs
+# http://crunchbang.org/forums/viewtopic.php?id=3232
+# ----------------------------------------------------------------------
+# (BunsenLabs 8 Hydrogen (RC1) uses tint2 v. 0.11)
+# ======================================================================
+
+# ======================================================================
+# compiled by phle
+# last edited 2015-10-31
+# ======================================================================
+
+
+# ======================================================================
+# Backgrounds and borders
+
+# rounded = number_of_pixels
+#     the corner radius
+# background_color = color opacity
+#     color is specified in hex RGB, e.g. #ff0000 is red
+#     opacity varies from (0 to 100), where 0 is fully transparent, 100 is fully opaque
+# border_width = width
+#     the border width in pixels
+# border_color = color opacity
+#     color is specified in hex RGB, e.g. #ff0000 is red
+#     opacity varies from (0 to 100), where 0 is fully transparent, 100 is fully opaque
+
+# You can define as many backgrounds as you want.
+
+# tint2 automatically identifies each background with a number starting from 1 (1, 2, ...).
+# Afterwards, you can apply a background to objects (panel, taskbar, task, clock, systray) using the background id.
+
+# Identifier 0 refers to a special background which is fully transparent, then identifier 1 is applied to the first background defined in the config file, etc.
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+# background_id = 0
+#                                  launcher_background_id = 0
+#                                  taskbar_name_background_id = 0
+#                                  taskbar_name_active_background_id = 0
+#                                  systray_background_id = 0
+#                                  clock_background_id = 0
+#                                  battery_background_id = 0
+# the pre-defined,
+# fully transparent, background
+# ---------------------------------
+# background_id = 1
+#                                  panel_background_id = 1
+rounded = 0
+border_width = 0
+background_color = #000000 40
+border_color = #828282 0
+# ---------------------------------
+# background_id = 2
+#                                  taskbar_background_id = 2
+rounded = 0
+border_width = 1
+background_color = #000000 0
+border_color = #000000 0
+# ---------------------------------
+# background_id = 3
+#                                  taskbar_active_background_id = 3
+rounded = 0
+border_width = 1
+background_color = #d8d8d8 8
+border_color = #d8d8d8 0
+# ---------------------------------
+# background_id = 4
+#                                  task_background_id = 4
+#                                  task_iconified_background_id = 4
+rounded = 1
+border_width = 0
+background_color = #000000 0
+border_color = #000000 0
+# ---------------------------------
+# background_id = 5
+#                                  task_active_background_id = 5
+rounded = 1
+border_width = 0
+background_color = #d8d8d8 30
+border_color = #d8d8d8 30
+# ---------------------------------
+# background_id = 6
+#                                  task_urgent_background_id = 6
+rounded = 1
+border_width = 1
+background_color = #888888 20
+border_color = #ED2323 60
+# ---------------------------------
+# background_id = 7
+#                                  tooltip_background_id = 7
+rounded = 3
+border_width = 0
+background_color = #222222 90
+border_color = #222222 90
+# ---------------------------------
+# background_id = 8
+#                                  not used
+rounded = 1
+border_width = 1
+background_color = #888888 20
+border_color = #888888 20
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# background_id = 9      a more "urgent attention"-requesting background
+#                                  task_urgent_background_id = 9
+rounded = 1
+border_width = 1
+background_color = #FFFFCC 75
+border_color = #FF0000 75
+# ----------------------------------------------------------------------
+
+
+# ======================================================================
+# Panel
+
+# panel_items = LTSBC
+#     defines the items tint2 will show and the order of those items, from left to right
+#         L: Launcher
+#         T: Taskbar
+#         S: Systray (also called notification area)
+#         B: Battery status
+#         C: Clock
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+#panel_items = TSC
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+#panel_items = LTSC
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# if you want the battery status included,
+# don't forget to set battery = 1 as well
+#panel_items = TBSC
+panel_items = LTBSC
+# ----------------------------------------------------------------------
+
+# panel_monitor = monitor (all, 1, 2, ...)
+#     Which monitor tint2 draws the panel on
+#     The first monitor is 1
+#     Use panel_monitor = all to get a separate panel per monitor
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+panel_monitor = all
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# panel_position = vertical_position horizontal_position orientation
+#     vertical_position: top / center / bottom
+#     horizontal_position: left / center / right
+#     orientation: horizontal / vertical
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+panel_position = top center horizontal
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# panel_size = width height
+#     width and height can be specified without units (e.g. 123) to mean pixels,
+#     or with % signs to mean percentages of the monitor size (e.g. 50%).
+#     Use 100% for full monitor width/height.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+panel_size = 100% 30
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# panel_margin = horizontal_margin vertical_margin
+#     The margins define the distance between the panel and the horizontal/vertical monitor edge.
+#     Use 0 to obtain a panel with the same size as the edge of the monitor (no margin).
+# (see image on [https://code.google.com/p/tint2/wiki/Configure] or [https://gitlab.com/o9000/tint2/wikis/Configure])
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#panel_margin = 0 -1
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+panel_margin = 0 0
+# ----------------------------------------------------------------------
+
+# panel_padding = horizontal_padding vertical_padding spacing
+# (see image on [https://code.google.com/p/tint2/wiki/Configure] or [https://gitlab.com/o9000/tint2/wikis/Configure])
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#panel_padding = 0 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+panel_padding = 0 0 1
+# ----------------------------------------------------------------------
+
+# font_shadow = boolean (0 or 1)
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+font_shadow = 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# panel_background_id = integer
+#     Which background to use for the panel.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+panel_background_id = 1
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# wm_menu = boolean (0 or 1)
+#     Defines if tint2 forwards unhandled mouse events to your window manager.
+#     Useful for window managers such as openbox, which display the start menu if you right click on the desktop.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+wm_menu = 1
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# panel_dock = boolean (0 or 1)
+#     Defines if tint2 is placed into the window manager's dock.
+#     For the openbox window manager it is advised to also use a modifier for the moveButton option, otherwise the mouse click is not forwarded to tint2 (in ~/.config/openbox/rc.xml).
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+panel_dock = 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# panel_layer = bottom/normal/top
+#     Places tint2 into the bottom/normal/top layer.
+#     This is helpful for specifying if the panel can be covered by other windows or not.
+#     The default is the bottom layer, but with real transparency normal or top layer may be a nice alternative.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+panel_layer = bottom
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# strut_policy = follow_size/minimum/none
+#     STRUTs are used by the window manager to decide the size of maximized windows.
+#     follow_size means that the maximized windows always resize to have a common edge with tint2.
+#     minimum means that the maximized windows always expand to have a common edge with the hidden panel. This is useful if the autohide option is enabled.
+#     none means that the maximized windows use the full screen size.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+strut_policy = follow_size
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# panel_window_name = string
+#     Defines the name of the panel's window. Default: 'tint2'.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# disable_transparency = boolean (0 or 1)
+#     Whether to disable transparency instead of detecting if it is supported.
+#     Useful on broken graphics stacks.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# autohide = boolean (0 or 1)
+#     Whether to enable panel hiding when the mouse cursor exits the panel.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+autohide = 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# autohide_show_timeout = float
+#     Show timeout in seconds after the mouse cursor enters the panel.
+#     Use '.' as decimal separator.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+autohide_show_timeout = 0.3
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# autohide_hide_timeout = float
+#     Hide timeout in seconds after the mouse cursor exits the panel.
+#     Use '.' as decimal separator.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+autohide_hide_timeout = 1.5
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# autohide_height = integer
+#     panel height (width for vertical panels) in hidden mode.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+autohide_height = 6
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+# ======================================================================
+# Launcher
+
+# launcher_item_app = path_to_application
+#     Each launcher_item_app must be a full path to a .desktop file following the freedesktop.org specification [http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html].
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+#launcher_item_app = /usr/share/applications/terminator.desktop
+#launcher_item_app = /usr/share/applications/xfce4-file-manager.desktop
+#launcher_item_app = /usr/share/applications/gedit.desktop
+#launcher_item_app = /usr/share/applications/iceweasel.desktop
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+launcher_item_app = /usr/share/applications/bl-www-browser.desktop
+launcher_item_app = /usr/share/applications/bl-file-manager.desktop
+launcher_item_app = /usr/share/applications/bl-text-editor.desktop
+launcher_item_app = /usr/share/applications/bl-terminal-emulator.desktop
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#launcher_item_app = /usr/share/applications/anki.desktop
+# ----------------------------------------------------------------------
+
+# launcher_background_id = integer
+#     Defines which background to use.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+launcher_background_id = 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# launcher_padding = horizontal_padding vertical_padding spacing
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#launcher_padding = 8 4 4
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+launcher_padding = 2 2 2
+# ----------------------------------------------------------------------
+
+# launcher_icon_size = integer
+#     The launcher icon size, in pixels.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#launcher_icon_size = 24
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# you can try 0 for automatic icon sizing  (see systray_icon_size !)
+launcher_icon_size = 0
+# you can also put them on multiple rows, by shrinking them
+#launcher_icon_size = 10
+# ----------------------------------------------------------------------
+
+# launcher_icon_theme = name_of_theme
+#     Normally, tint2 will detect and use the icon theme of your desktop when you have an XSETTINGS manager running. Otherwise, the theme specified by this option is used.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# Specify icon theme names with launcher_icon_theme. 
+# if you have an XSETTINGS manager running (like xfsettingsd), tint2 will follow your current theme.
+#launcher_icon_theme = gnome-colors-statler
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# Specify icon theme names with launcher_icon_theme.
+# if you have an XSETTINGS manager running (like xfsettingsd), tint2 will follow your current theme.
+launcher_icon_theme = Faenza-Dark-Bunsen
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Icon Themes available in BunsenLabs /20150913
+#launcher_icon_theme = Adwaita
+#launcher_icon_theme = Faenza-Bunsen
+#launcher_icon_theme = Faenza-Dark-Bunsen
+#launcher_icon_theme = GNOME
+# ----------------------------------------------------------------------
+
+# launcher_icon_asb = alpha (0 to 100) saturation (-100 to 100) brightness (-100 to 100)
+#     Adjusts the icon color and transparency.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# alpha
+#     the degree of opacity
+#            0  no opacity (fully transparent - "it's there, but you can't see it")
+#          100  full opacity (no transparency, fully visible)
+# saturation
+#     "the colourfulness of a colour relative to its own brightness"
+#         -100  greyscale, black/white
+#          100  "aaall the colours, turned up to 11+"
+# brightness
+#     the amount of reflected light
+#         -100  none (dark)
+#          100  bright
+# less prominent
+#launcher_icon_asb = 75 -20 -15
+# almost greyscale
+launcher_icon_asb = 70 -45 -10
+# full opacity, 100 % greyscale, and just slightly darker
+#launcher_icon_asb = 100 -100 -5
+# ----------------------------------------------------------------------
+
+# launcher_tooltip = boolean (0 or 1)
+#     Whether to show tooltips for the launcher icons.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+launcher_tooltip = 1
+# ----------------------------------------------------------------------
+
+
+# ======================================================================
+# Taskbar / Pager
+
+# taskbar_mode = single_desktop/multi_desktop
+#     single_desktop : Shows a normal taskbar listing the tasks running on the current virtual desktop (also known as 'workspace');
+#     multi_desktop : Pager like capability. Shows multiple taskbars, one per virtual desktop, with which:
+#         You can drag-and-drop tasks between virtual desktops;
+#         You can switch between virtual desktops.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+taskbar_mode = multi_desktop
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# taskbar_distribute_size = boolean (0 or 1)
+#     If enabled, in multi-desktop mode distributes between taskbars the available size proportionally to the number of tasks.
+#     Default: disabled.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# taskbar_padding = horizontal_padding vertical_padding spacing
+# (see image on [https://code.google.com/p/tint2/wiki/Configure] or [https://gitlab.com/o9000/tint2/wikis/Configure])
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#taskbar_padding = 6 0 6
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Change this AND task_maximum_size to have the task icons closer together
+# (with less space between them).
+taskbar_padding = 0 0 1
+# ----------------------------------------------------------------------
+
+# taskbar_background_id = integer
+#     Which background to use
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+taskbar_background_id = 2
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# taskbar_active_background_id = integer
+#     Which background to use for the taskbar of the current virtual desktop.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+taskbar_active_background_id = 3
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# taskbar_name = boolean (0 or 1)
+#     Whether to show the virtual desktop name in the taskbar.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+taskbar_name = 1
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+#taskbar_name = 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# taskbar_name_padding = padding
+#     Padding for the virtual desktop name.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+taskbar_name_padding = 3
+# ----------------------------------------------------------------------
+
+# taskbar_name_background_id = integer
+#     Which background to use for the desktop name.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+taskbar_name_background_id = 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# taskbar_name_font = [FAMILY-LIST] [STYLE-OPTIONS] [SIZE]
+#     Font configuration for the desktop name.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#taskbar_name_font = Liberation Sans 9
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+taskbar_name_font = sans bold 8
+# ----------------------------------------------------------------------
+
+# taskbar_name_font_color = color opacity (0 to 100)
+#     Font color for the desktop name.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+taskbar_name_font_color = #828282 100
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# taskbar_name_active_background_id = integer
+#     Which background to use for the name of the current desktop.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+taskbar_name_active_background_id = 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# taskbar_name_active_font_color = color opacity (0 to 100)
+#     Font color for the name of the current desktop.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+taskbar_name_active_font_color = #828282 100
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# ======================================================================
+# Task
+
+# The following options configure the task buttons in the taskbar:
+
+# urgent_nb_of_blink = integer
+#     Number of blinks on 'get attention' events.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+urgent_nb_of_blink = 20
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# task_icon = boolean (0 or 1)
+#     Whether to display the task icon.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+task_icon = 1
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# task_text = boolean (0 or 1)
+#     Whether to display the task text.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+task_text = 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# display the name of the task (to the right of its icon, if icon is shown too)
+#task_text = 1
+# ----------------------------------------------------------------------
+
+# task_centered = boolean (0 or 1)
+#     Whether the task text is centered.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+task_centered = 1
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# if you have set task_text = 1 then task_centered = 0 will look better
+#task_centered = 0
+# ----------------------------------------------------------------------
+
+# task_tooltip = boolean (0 or 1)
+#     Whether to show tooltips for tasks.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+task_tooltip = 1
+# ----------------------------------------------------------------------
+
+# task_maximum_size = width height
+#     width is used with horizontal panels to limit the size of the tasks.
+#        Use width = 0 to get full taskbar width.
+#     height is used with vertical panels.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#task_maximum_size = 40 40
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Change this AND taskbar_padding to have the task icons closer together
+# (with less space between them).
+task_maximum_size = 28 28
+# ----------------------------------------------------------------------
+
+# task_padding = horizontal_padding vertical_padding
+# (see image on [https://code.google.com/p/tint2/wiki/Configure] or [https://gitlab.com/o9000/tint2/wikis/Configure])
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+task_padding = 2 2
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# task_font = [FAMILY-LIST] [STYLE-OPTIONS] [SIZE]
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#task_font = Liberation Sans 06_55 6
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+task_font = sans 8
+# ----------------------------------------------------------------------
+
+# task_font_color = color opacity (0 to 100)
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+task_font_color = #828282 60
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# task_icon_asb = alpha (0 to 100) saturation (-100 to 100) brightness (-100 to 100)
+#     Adjust the task icon's color and transparency.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#task_icon_asb = 80 0 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+task_icon_asb = 85 -5 -10
+# ----------------------------------------------------------------------
+
+# task_background_id = integer
+#     Which background to use for non selected tasks
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+task_background_id = 4
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# For the next 3 options STATUS can be active / iconified / urgent:
+
+# task_STATUS_font_color = color opacity (0 to 100)
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#task_active_font_color = #828282 100
+#task_iconified_font_color = #d8d8d8 60
+#task_urgent_font_color = #FFFFFF 100
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+task_active_font_color = #cccccc 70
+task_iconified_font_color = #666666 70
+task_urgent_font_color = #ff9900 100
+# ----------------------------------------------------------------------
+
+# task_STATUS_icon_asb = alpha (0 to 100) saturation (-100 to 100) brightness (-100 to 100)
+#     Adjusts the task icon's color and transparency.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#task_active_icon_asb = 100 0 0
+#task_iconified_icon_asb = 80 0 0
+#task_urgent_icon_asb = 100 0 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+task_active_icon_asb = 90 0 0
+task_iconified_icon_asb = 75 -15 -20
+task_urgent_icon_asb = 100 10 15
+# ----------------------------------------------------------------------
+
+# task_STATUS_background_id = integer
+#     Which background to use for the task.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#task_active_background_id = 5
+#task_iconified_background_id = 4
+#task_urgent_background_id = 6
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+task_active_background_id = 5
+task_iconified_background_id = 4
+task_urgent_background_id = 9
+# ======================================================================
+# Mouse actions for tasks (taskbar buttons)
+
+# The possible mouse events are:
+#     left, middle, right, scroll_up, scroll_down.
+
+# The possible mouse actions are:
+#     none, close, toggle, iconify, shade, toggle_iconify, maximize_restore, desktop_left, desktop_right, next_task, prev_task.
+
+# Use mouse_event = action to customize mouse actions. Example:
+#     mouse_middle = none
+#     mouse_right = close
+#     mouse_scroll_up = toggle
+#     mouse_scroll_down = iconify
+
+# The action semantics:
+#     close : close the task
+#     toggle : toggle the task
+#     iconify : iconify (minimize) the task
+#     toggle_iconify : toggle or iconify the task
+#     maximize_restore : maximized or minimized the task
+#     shade : shades (collapses) the task
+#     desktop_left : send the task to the desktop on the left
+#     desktop_right : send the task to the desktop on the right
+#     next_task : send the focus to next task
+#     prev_task : send the focus to previous task
+
+#     none : 
+#         If a mouse action is set to none and wm_menu = 1 [under Panel, above] is set, the mouse event is forwarded to the window manager.
+#         Otherwise it is ignored.
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+mouse_middle = none
+mouse_right = toggle
+mouse_scroll_up = toggle
+mouse_scroll_down = iconify
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#mouse_left = none
+#mouse_middle = none
+#mouse_right = none
+#mouse_scroll_up = none
+#mouse_scroll_down = none
+# ----------------------------------------------------------------------
+
+
+# ======================================================================
+# System Tray
+
+# systray = boolean (0 or 1)
+#     Whether to show the system tray.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+systray = 1
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# systray_padding = horizontal_padding vertical_padding spacing
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#systray_padding = 4 2 3
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+systray_padding = 2 0 1
+# ----------------------------------------------------------------------
+
+# systray_background_id = integer
+#     Which background to use.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+systray_background_id = 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# systray_sort = ascending/descending/left2right/right2left
+#     Specifies the sorting order for the icons in the systray
+#     (note that with left2right or right2left the order can be different on panel restart).
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+systray_sort = right2left
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# systray_icon_size = max_icon_size
+#     Set the maximum system tray icon size to number. Set to 0 for automatic icon sizing.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+systray_icon_size = 24
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#systray_icon_size = 0
+# ----------------------------------------------------------------------
+
+# systray_icon_asb = alpha (0 to 100) saturation (-100 to 100) brightness (-100 to 100)
+#     Adjust the systray icons color and transparency.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#systray_icon_asb = 100 0 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# full opacity, 60 % greyscale, and somewhat darker
+#     this dampens the colours for e.g. a present VLC icon,
+#     but (for better or worse) also dampens any colour used in the battery icon
+systray_icon_asb = 100 -60 -10
+# ----------------------------------------------------------------------
+
+# systray_monitor = integer (1, 2, ...)
+#     On which monitor to draw the systray.
+#     The first monitor is 1.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+systray_monitor = 1
+# ----------------------------------------------------------------------
+
+# ======================================================================
+# Clock
+
+# time1_format = %H:%M
+#     The format used by the first line of the clock.
+#     time1_format, time2_format and clock_tooltip use the 'strftime' syntax.
+#     To hide the clock, comment time1_format and time2_format.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#time1_format = %H:%M
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# for more options: man date (in a terminal)
+#
+# %H     hour (00..23)
+# %M     minute (00..59)
+# %S     second (00..60)
+# %T     time; same as %H:%M:%S
+# %Z     alphabetic time zone abbreviation (e.g., EDT)
+time1_format = %T %Z
+#
+# %I     hour (01..12)
+# %p     locale's equivalent of either AM or PM; blank if not known
+# %l     hour, space padded ( 1..12); otherwise same as %_I
+# %P     like %p, but lower case:      am    pm; blank if not known
+# if you prefer 01:23AM, use
+#time1_format = %I:%M%p
+# if you prefer  1:23am, use
+#time1_format = %l:%M%P
+# ----------------------------------------------------------------------
+
+# time1_timezone = :US/Hawaii
+#     time1_timezone, time2_timezone and clock_tooltip_timezone can be used to specify a timezone.
+#     If you do not specify a value the system-wide timezone is used.
+#     The timezones can usually be found in /usr/share/zoneinfo. If your timezones are in a different directory, you need to specify the absolute path, e.g. time1_timezone = :/different/zoneinfo/dir/US/Hawaii
+#     Always prepend the timezone with a ':'
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# time1_font = [FAMILY-LIST] [STYLE-OPTIONS] [SIZE]
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+#time1_font = Liberation Sans 11
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+#time1_font = Free Sans bold 11
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+time1_font = sans 10
+# ----------------------------------------------------------------------
+
+# time2_format = %A %d %B
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+##time2_format = %A %d %B
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# %A     locale's full weekday name (e.g., Sunday)
+# %d     day of month (e.g., 01)
+# %B     locale's full month name (e.g., January)
+# %Y     year
+# %m     month (01..12)
+# %d     day of month (e.g., 01)
+# %F     full date; same as %Y-%m-%d
+# %a     locale's abbreviated weekday name (e.g., Sun)
+# %V     ISO week number, with Monday as first day of week (01..53)
+time2_format = %F %a | W%V
+# ----------------------------------------------------------------------
+
+# time2_timezone = :Europe/Berlin
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# time2_font = [FAMILY-LIST] [STYLE-OPTIONS] [SIZE]
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+##time2_font = Liberation Sans 6
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+time2_font = sans 6
+# ----------------------------------------------------------------------
+
+# clock_font_color = color opacity (0 to 100)
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+clock_font_color = #b5b5b5 100
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# clock_padding = horizontal_padding vertical_padding
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#clock_padding = 12 4
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#clock_padding = 2 0
+clock_padding = 5 2
+# ----------------------------------------------------------------------
+
+# clock_background_id = integer
+#     Which background to use
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+clock_background_id = 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# clock_tooltip = %a, %d. %b %Y
+#     Format for the clock's tooltip.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+clock_tooltip = %A %d %B %Y
+# ----------------------------------------------------------------------
+
+# clock_tooltip_timezone = :UTC
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  CrunchBang 11 Waldorf  ~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BunsenLabs 8 Hydrogen  RC1 ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# clock_lclick_command = text
+#     Command to execute on left click.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+clock_lclick_command = gsimplecal
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# clock_rclick_command = text
+#     Command to execute on right click.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+clock_rclick_command = gsimplecal
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+# ======================================================================
+# Tooltip
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+tooltip = 1
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# tooltip_padding = horizontal_padding vertical_padding
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+tooltip_padding = 2 2
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# tooltip_show_timeout = float
+#     Delay to show the tooltip in seconds.
+#     Use '.' as decimal separator.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+tooltip_show_timeout = 0.0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# tooltip_hide_timeout = float
+#     Delay to hide the tooltip in seconds.
+#     Use '.' as decimal separator.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+tooltip_hide_timeout = 0.0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# tooltip_background_id = integer
+#     Which background to use for tooltips.
+#     Note that with fake transparency the alpha channel and corner radius options are not respected.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+tooltip_background_id = 7
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# tooltip_font_color = color opacity (0 to 100)
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+tooltip_font_color = #d8d8d8 100
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# tooltip_font = [FAMILY-LIST] [STYLE-OPTIONS] [SIZE]
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#tooltip_font = Liberation Sans normal 9.0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+tooltip_font = sans 9
+# ----------------------------------------------------------------------
+
+# ======================================================================
+# Battery
+
+# battery = boolean (0 or 1)
+#     Whether to enable the battery item.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+battery = 1
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Remember to add  B in panel_items as well!
+# ----------------------------------------------------------------------
+
+# battery_hide = never/integer (0 to 100)
+#     At what battery percentage the battery item is hidden.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#battery_hide = 96
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+battery_hide = never
+# ----------------------------------------------------------------------
+
+# battery_low_status = integer
+#     At what battery percentage the low command is executed.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+battery_low_status = 20
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#battery_low_status = 15
+# ----------------------------------------------------------------------
+
+# battery_low_cmd = notify-send "battery low"
+#     Command to execute when the battery is low.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+battery_low_cmd = notify-send "battery low"
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# bat1_font = [FAMILY-LIST] [STYLE-OPTIONS] [SIZE]
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#bat1_font = Liberation Mono 8
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bat1_font = sans 8
+# ----------------------------------------------------------------------
+
+# bat2_font = [FAMILY-LIST] [STYLE-OPTIONS] [SIZE]
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+#bat2_font = Liberation Mono 8
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bat2_font = sans 6
+# ----------------------------------------------------------------------
+
+# battery_font_color = color opacity (0 to 100)
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+battery_font_color = #b5b5b5 100
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# battery_padding = horizontal_padding vertical_padding
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+battery_padding = 2 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# battery_background_id = integer
+#     Which background to use for the battery.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  for both  CrunchBang 11 Waldorf  ~~~~~~
+#                                    and   BunsenLabs 8 Hydrogen  RC1 ~~
+battery_background_id = 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# ======================================================================
+
+
+# End of config
