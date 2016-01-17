@@ -20,7 +20,7 @@ Config {
                               -- AC "on" status
                        , "-O"	, "<left>% <fc=#dAA520>Charging</fc>"
                               -- charged status
-                       , "-i"	, "<left>% <fc=#006000>Charged</fc>"
+                       , "-i"	, "<fc=#006000>Charged</fc>"
                        ] 30
          , Run Date          "%d %B <fc=#4084d6>•</fc> <fc=#ffffff>%H:%M</fc>" "date" 100
          , Run StdinReader
