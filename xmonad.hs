@@ -10,16 +10,15 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
 
 
-baseConfig               = desktopConfig
+baseConfig             = desktopConfig
 
-main                     = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey baseConfig {
+main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey baseConfig {
     terminal           = "urxvtc"
   , modMask            = mod4Mask
   , borderWidth        = 2
   , normalBorderColor  = "#404040"
   , focusedBorderColor = "#4084d6"
   , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
-                                                <+> spawnOnce "compton --backend glx --paint-on-overlay --vsync opengl-mswc &"
                                                 <+> spawnOnce "xsetroot -cursor_name left_ptr"
                                                 <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
                                                 <+> spawnOnce "sh ~/.fehbg"
