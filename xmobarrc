@@ -4,7 +4,7 @@ Config {
     , fgColor     = "#bfbfbf"
     , sepChar     = "%"
     , alignSep    = "}{"
-    , position    = Static { xpos = 0, ypos = 0, width = 1920, height = 25 }
+    , position    = TopW C 100
     , persistent  = True
     , hideOnStart = False
     , template    = " %StdinReader%}{<fc=#ff0000>%locks%</fc> %battery% <fc=#4084d6>•</fc> <action=`orage`>%date%</action> "
