@@ -40,7 +40,7 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
        , ((0, 0x1008ff02), spawn "xbacklight -inc 1") ]
     myLayoutHook         = smartBorders  ( tiled ||| mtiled ||| full )
       where
-        tiled            = named "Tall" $ Tall 1 (3/100) (1/2)
+        tiled            = named "Tall" $ Tall 1 (1/100) (1/2)
 	mtiled           = named "Wide" $ Mirror tiled
         full             = named "Full" $ Full
     myPP                 = defaultPP { ppSep     = " <fc=#4084d6>•</fc> "
