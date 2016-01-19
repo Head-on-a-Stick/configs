@@ -7,7 +7,7 @@ Config {
     , position    = Static { xpos = 0, ypos = 0, width = 1920, height = 25 }
     , persistent  = True
     , hideOnStart = False
-    , template    = " %StdinReader%}{%locks% %battery% <fc=#4084d6>•</fc> <action=`orage`>%date%</action> "
+    , template    = " %StdinReader%}{<fc=#ff0000>%locks%</fc> %battery% <fc=#4084d6>•</fc> <action=`orage`>%date%</action> "
     , commands    =
          [ Run Battery [ "--template" , "Battery: <acstatus>"
                        , "--Low"      , "25"        -- units: %
