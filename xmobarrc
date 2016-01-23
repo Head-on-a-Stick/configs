@@ -1,14 +1,16 @@
 Config {
-      font        = "xft:Cantarell:size=10:bold:antialias=true"
-    , bgColor     = "black"
-    , fgColor     = "#bfbfbf"
-    , sepChar     = "%"
-    , alignSep    = "}{"
-    , position    = TopW C 100
-    , persistent  = True
-    , hideOnStart = False
-    , template    = " %StdinReader%}{<fc=#ff0000>%locks%</fc> %battery% <fc=#4084d6>•</fc> <action=`orage`>%date%</action> "
-    , commands    =
+      font             = "xft:Cantarell:size=10:bold:antialias=true"
+    , bgColor          = "black"
+    , fgColor          = "#bfbfbf"
+    , sepChar          = "%"
+    , alignSep         = "}{"
+    , position         = TopW C 100
+    , persistent       = True
+    , hideOnStart      = False
+    , allDesktops      = True
+    , overrideRedirect = False
+    , template         = " %StdinReader%}{<fc=#ff0000>%locks%</fc> %battery% <fc=#4084d6>•</fc> <action=`orage`>%date%</action> "
+    , commands         =
          [ Run Battery [ "--template" , "Battery: <acstatus>"
                        , "--Low"      , "25"        -- units: %
                        , "--High"     , "75"        -- units: %
