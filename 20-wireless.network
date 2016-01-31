@@ -1,0 +1,8 @@
+[Match]
+Name=wlp2s0
+
+[Network]
+Address=192.168.1.69/24
+Gateway=192.168.1.254
+DNS=8.8.8.8
+DNS=8.8.4.4
