@@ -19,8 +19,8 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
   , normalBorderColor  = "#404040"
   , focusedBorderColor = "#4084d6"
   , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
-						<+> spawnOnce "sh ~/.fehbg"
                                                 <+> spawnOnce "xset s 300 -dpms"
+						<+> spawnOnce "sh ~/.fehbg"
   , keys               = \c -> myKeys c `M.union` keys baseConfig c
   , layoutHook         = myLayoutHook
   , handleEventHook    = fullscreenEventHook
@@ -28,6 +28,8 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
                                     , className =? "Gimp"         --> doFloat
                                     , className =? "Orage"        --> doFloat
 			            , className =? "Lxappearance" --> doFloat
+				    , className =? "Galculator"   --> doFloat
+				    , className =? "Xsensors"     --> doFloat
 		                    ]
 }
   where
