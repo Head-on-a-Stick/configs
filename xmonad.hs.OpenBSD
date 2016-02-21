@@ -22,8 +22,7 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
                                                 <+> spawnOnce "xsetroot -cursor_name left_ptr"
                                                 <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
                                                 <+> spawnOnce "xset s 300 -dpms +fp /usr/local/share/fonts/BlockZone fp rehash"
-                                                <+> spawnOnce "feh --randomize --bg-max /home/empty/Pictures/nhm"
-						<+> spawnOnce "compton --backend glx --paint-on-overlay --vsync opengl-mswc"
+                                                <+> spawnOnce "feh --bg-max /home/empty/git/configs/openbsd1280x800.png"
 						<+> spawnOnce "export LC_CTYPE=en_GB.UTF-8"
   , keys               = \c -> myKeys c `M.union` keys baseConfig c
   , layoutHook         = myLayoutHook
