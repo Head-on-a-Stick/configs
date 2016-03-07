@@ -22,8 +22,7 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
                                                 <+> spawnOnce "xsetroot -cursor_name left_ptr"
                                                 <+> spawnOnce "synclient tapbutton1=0 tapbutton2=0 tapbutton3=0 verttwofingerscroll=0 vertedgescroll=1 horizedgescroll=1 horizscrolldelta=10"
                                                 <+> spawnOnce "xset s 300 -dpms +fp /usr/local/share/fonts/BlockZone fp rehash"
-                                                <+> spawnOnce "feh --bg-max /home/empty/git/configs/openbsd1280x800.png"
-						<+> spawnOnce "export LC_CTYPE=en_GB.UTF-8"
+                                                <+> spawnOnce "feh --bg-fill /home/empty/Downloads/O5YX5pG.png"
   , keys               = \c -> myKeys c `M.union` keys baseConfig c
   , layoutHook         = myLayoutHook
   , handleEventHook    = fullscreenEventHook
@@ -37,7 +36,7 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
 }
   where
     myKeys (XConfig {modMask = modm}) = M.fromList $
-       [ ((0, xK_Menu),    spawn "dmenu_run -fn 'xft:Cantarell:Bold:size=9' -b -nb '#000000' -nf '#808080' -sb '#000000' -sf '#ffffff'" ) 
+       [ ((0, xK_Menu),    spawn "dmenu_run -fn 'xft:Cantarell:Bold:size=8' -b -nb '#000000' -nf '#808080' -sb '#000000' -sf '#ffffff'" ) 
        , ((0, 0x1008ff11), spawn "mixerctl outputs.master=-10,-10;mixerctl outputs.master.mute=off" )
        , ((0, 0x1008ff12), spawn "mixerctl -t outputs.master.mute" )
        , ((0, 0x1008ff13), spawn "mixerctl outputs.master=+10,+10;mixerctl outputs.master.mute=off" )
@@ -47,7 +46,7 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
         tiled            = named "Tall" $ Tall 1 (3/100) (1/2)
 	mtiled           = named "Wide" $ Mirror tiled
         full             = named "Full" $ Full
-    myPP                 = defaultPP { ppSep     = " <fc=#4084d6>:</fc> "
+    myPP                 = defaultPP { ppSep     = " <fc=#4084d6> </fc> "
                                      , ppTitle   = xmobarColor "#bfbfbf" "" . shorten 500
 			             , ppCurrent = xmobarColor "#f0dfaf" "" . wrap "[" "]"
 				     , ppLayout  = xmobarColor "#60b48a" ""
