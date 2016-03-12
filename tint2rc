@@ -7,7 +7,7 @@
 rounded = 0
 border_width = 1
 background_color = #e7e8eb 100
-border_color = #dfdfdf 100
+border_color = #d5d6dc 100
 
 # ID 2
 rounded = 1
@@ -18,7 +18,7 @@ border_color = #4084d6 100
 # ID 3
 rounded = 2
 border_width = 1
-background_color = #FCFdfd 100
+background_color = #fcfdfd 100
 border_color = #4084d6 100
 
 # ID 4
@@ -68,14 +68,14 @@ task_tooltip = 1
 task_icon_asb = 100 0 0
 task_active_icon_asb = 100 0 0
 task_urgent_icon_asb = 100 0 0
-task_iconified_icon_asb = 80 0 0
+task_iconified_icon_asb = 50 0 0
 
 # Fonts
 task_font = Cantarell 8
 task_font_color = #000000 100
 task_active_font_color = #000000 100
 task_urgent_font_color = #000000 100
-task_iconified_font_color = #000000 80
+task_iconified_font_color = #000000 50
 font_shadow = 0
 
 # System Tray
