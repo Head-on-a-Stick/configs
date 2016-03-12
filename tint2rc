@@ -18,8 +18,8 @@ border_color = #4084d6 100
 # ID 3
 rounded = 2
 border_width = 1
-background_color = #fcfdfd 100
-border_color = #4084d6 100
+background_color = #f5f6f7 100
+border_color = #d5d6dc 100
 
 # ID 4
 rounded = 2
