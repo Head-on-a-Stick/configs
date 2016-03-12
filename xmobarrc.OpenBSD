@@ -1,0 +1,33 @@
+Config {
+      font             = "xft:Cantarell:size=10:bold:antialias=true"
+    , bgColor          = "black"
+    , fgColor          = "#bfbfbf"
+    , sepChar          = "%"
+    , alignSep         = "}{"
+    , position         = TopW C 100
+    , persistent       = True
+    , hideOnStart      = False
+    , allDesktops      = True
+    , overrideRedirect = False
+    , template         = " %StdinReader%}{<fc=#ff0000>%locks%</fc> %date% "
+    , commands         =
+         [ Run Battery [ "--template" , "Battery: <acstatus>"
+                       , "--Low"      , "25"        -- units: %
+                       , "--High"     , "75"        -- units: %
+                       , "--low"      , "red"
+                       , "--normal"   , "#60b48a"
+                       , "--high"     , "orange"
+
+                       , "--" -- battery specific options
+                              -- discharging status
+                       , "-o"	, "<left>%"
+                              -- AC "on" status
+                       , "-O"	, "<left>% <fc=#dAA520>Charging</fc>"
+                              -- charged status
+                       , "-i"	, "<fc=#60b48a>Charged</fc>"
+                       ] 30
+         , Run Date          "%d %B <fc=#4084d6> · </fc> <fc=#ffffff>%H:%M</fc>" "date" 100
+         , Run StdinReader
+	 , Run Locks
+         ]
+}
