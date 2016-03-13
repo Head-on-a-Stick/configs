@@ -1,7 +1,7 @@
-URxvt.iconFile:			/usr/share/icons/Adwaita/16x16/apps/utilities-terminal.png
+URxvt.iconFile:			/usr/share/icons/Moka/48x48/apps/utilities-terminal.png
 URxvt.colorBD:			#ffffff
 URxvt.colorUL:			#ffffff
-URxvt.geometry:			90x30
+URxvt.geometry:			100x30
 URxvt.cursorUnderline:		true
 URxvt.cursorBlink:		true
 URxvt.pointerBlank:		true
@@ -15,9 +15,10 @@ URxvt.perl-ext-common:		default,matcher
 URxvt.url-launcher:		/usr/bin/firefox
 URxvt.matcher.button:		3
 URxvt.scrollBar:		false
-URxvt.fading:			25
+#URxvt.fading:			25
+URxvt.depth:			32
 *.foreground:			#bfbfbf
-*.background:			#000000
+*.background:			[75]#000000
 *.cursorColor:			#00ff00
 *.color0:			#000000
 *.color8:			#808080
