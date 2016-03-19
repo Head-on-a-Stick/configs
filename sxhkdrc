@@ -141,21 +141,17 @@ super + @button{1-3}
 
 # Custom
 
-XXXXXX
-werOff
-        /usr/local/bin/quit
-
 XF86MonBrightnessUp
         xbacklight -inc 1
 
 XF86MonBrightnessDown
         xbacklight -dec 1
 
-XF86AudioRaiseVolume
-        amixer set -c0 Master 10%+ unmute
+#XF86AudioRaiseVolume
+#        amixer set -c0 Master 5%+ unmute
 
-XF86AudioLowerVolume
-        amixer set -c0 Master 10%- unmute
+#XF86AudioLowerVolume
+#        amixer set -c0 Master 5%- unmute
 
-XF86AudioMute
-        amixer set -c0 Master toggle
+#XF86AudioMute
+#        amixer set -c0 Master toggle
