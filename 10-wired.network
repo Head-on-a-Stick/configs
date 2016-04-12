@@ -2,7 +2,9 @@
 Name=enp3s0f1
 
 [Network]
-Address=192.168.1.74/24
-Gateway=192.168.1.254
+DHCP=ipv4
 DNS=8.8.8.8
 DNS=8.8.4.4
+
+[DHCP]
+RouteMetric=10
