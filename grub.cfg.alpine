@@ -1,7 +1,7 @@
 set timeout=0
 menuentry 'Alpine' {
 	set root=(hd0,1)
-	linux /vmlinuz-grsec root=UUID=7b4f7973-8ee7-4f80-b008-085c4b718a3f modules=sd-mod,usb-storage,ext3 quiet
+	linux /vmlinuz-grsec root=UUID=7b4f7973-8ee7-4f80-b008-085c4b718a3f modules=sd-mod,usb-storage,ext4 quiet
 	initrd /initramfs-grsec
 }
 menuentry 'Arch' {
