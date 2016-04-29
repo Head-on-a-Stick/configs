@@ -24,12 +24,13 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
   , keys               = \c -> myKeys c `M.union` keys baseConfig c
   , layoutHook         = myLayoutHook
   , handleEventHook    = fullscreenEventHook
-  , manageHook         = composeAll [ isFullscreen                --> doFullFloat
-                                    , className =? "Gimp"         --> doFloat
-                                    , className =? "Orage"        --> doFloat
-			            , className =? "Lxappearance" --> doFloat
-				    , className =? "Galculator"   --> doFloat
-				    , className =? "Xsensors"     --> doFloat
+  , manageHook         = composeAll [ isFullscreen                    --> doFullFloat
+                                    , className =? "Gimp"             --> doFloat
+                                    , className =? "Orage"            --> doFloat
+			            , className =? "Lxappearance"     --> doFloat
+				    , className =? "Galculator"       --> doFloat
+				    , className =? "Xsensors"         --> doFloat
+				    , className =? "Transmission-gtk" --> doFloat
 		                    ]
 }
   where
