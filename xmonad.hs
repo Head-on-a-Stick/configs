@@ -20,7 +20,7 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
   , focusedBorderColor = "#4084d6"
   , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
                                                 <+> spawnOnce "xset s 300 -dpms"
-						<+> spawnOnce "sh ~/.fehbg"
+						<+> spawnOnce "while true;do feh --randomize --bg-fill ~/Pictures/simplewallpapers;sleep 600;done &"
   , keys               = \c -> myKeys c `M.union` keys baseConfig c
   , layoutHook         = myLayoutHook
   , handleEventHook    = fullscreenEventHook
