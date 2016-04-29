@@ -1,0 +1,14 @@
+menuentry 'Alpine' {
+	set root=(hd0,2)
+	linux /boot/vmlinuz-grsec root=/dev/sda2 rw modules=ext4 quiet zswap.enabled=1 elevator=noop
+	initrd /boot/initramfs-grsec
+}
+menuentry 'OpenBSD' {
+	set root=(hd0,4)
+	chainloader +1
+}
+menuentry 'Arch' {
+	set root=(hd0,1)
+	linux /boot/vmlinuz-linux root=/dev/sda1 rw quiet zswap.enabled=1 elevator=noop
+	initrd /boot/initramfs-linux.img
+}
