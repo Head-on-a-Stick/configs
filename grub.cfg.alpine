@@ -1,3 +1,9 @@
+menuentry 'Xen' {
+	set root=(hd0,2)
+	multiboot /boot/xen.gz placeholder
+	module /boot/vmlinuz-grsec placeholder root=/dev/sda2 rw modules=ext4 quiet zswap.enabled=1 elevator=noop
+	module /boot/initramfs-grsec
+}
 menuentry 'Alpine' {
 	set root=(hd0,2)
 	linux /boot/vmlinuz-grsec root=/dev/sda2 rw modules=ext4 quiet zswap.enabled=1 elevator=noop
