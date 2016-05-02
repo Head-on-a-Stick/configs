@@ -15,7 +15,7 @@ baseConfig             = desktopConfig
 main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey baseConfig {
     terminal           = "urxvtc"
   , modMask            = mod4Mask
-  , borderWidth        = 2
+  , borderWidth        = 3
   , normalBorderColor  = "#404040"
   , focusedBorderColor = "#4084d6"
   , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
@@ -26,6 +26,7 @@ main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey base
   , handleEventHook    = fullscreenEventHook
   , manageHook         = composeAll [ isFullscreen                    --> doFullFloat
                                     , className =? "Gimp"             --> doFloat
+                                    , className =? "Kodi"             --> doFullFloat
                                     , className =? "Orage"            --> doFloat
 			            , className =? "Lxappearance"     --> doFloat
 				    , className =? "Galculator"       --> doFloat
