@@ -1,19 +1,6 @@
+set timeout=0
 menuentry 'Alpine' {
-	set root=(hd0,2)
-	linux /boot/vmlinuz-grsec root=/dev/sda2 rw modules=ext4 quiet zswap.enabled=1 elevator=noop
+	set root=(hd0)
+	linux /boot/vmlinuz-grsec root=/dev/sda rw modules=btrfs quiet zswap.enabled=1 elevator=noop
 	initrd /boot/initramfs-grsec
-}
-menuentry 'OpenBSD' {
-	set root=(hd0,4)
-	chainloader +1
-}
-menuentry 'Arch' {
-	set root=(hd0,1)
-	linux /boot/vmlinuz-linux root=/dev/sda1 rw quiet zswap.enabled=1 elevator=noop
-	initrd /boot/intel-ucode.img /boot/initramfs-linux.img
-}
-menuentry 'The Lab' {
-	loopback loop (hd0,2)/boot/bl.iso
-	linux (loop)/live/vmlinuz boot=live config fromiso=/dev/sda2/boot/bl.iso
-	initrd (loop)/live/initrd.img
 }
