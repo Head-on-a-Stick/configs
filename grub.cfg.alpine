@@ -1,6 +1,6 @@
 set timeout=0
 menuentry 'Alpine' {
 	set root=(hd0)
-	linux /boot/vmlinuz-grsec root=/dev/sda rw modules=btrfs quiet zswap.enabled=1 elevator=noop
+	linux /boot/vmlinuz-grsec root=/dev/sda rw modules=btrfs quiet elevator=noop
 	initrd /boot/initramfs-grsec
 }
