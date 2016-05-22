@@ -1,15 +1,6 @@
+set timeout=0
 menuentry 'Alpine' {
-	set root=(hd0,2)
-	multiboot /boot/xen.gz placeholder
-	module /boot/vmlinuz-grsec placeholder root=/dev/sda2 rw modules=ext4 quiet zswap.enabled=1 elevator=noop
-	module /boot/initramfs-grsec
-}
-menuentry 'OpenBSD' {
-	set root=(hd0,4)
-	chainloader +1
-}
-menuentry 'Arch' {
-	set root=(hd0,1)
-	linux /boot/vmlinuz-linux root=/dev/sda1 rw quiet zswap.enabled=1 elevator=noop
-	initrd /boot/intel-ucode.img /boot/initramfs-linux.img
+	set root=(hd0)
+	linux /boot/vmlinuz-grsec root=/dev/sda rw modules=btrfs quiet elevator=noop
+	initrd /boot/initramfs-grsec
 }
