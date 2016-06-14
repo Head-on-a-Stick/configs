@@ -5,8 +5,8 @@ URxvt.geometry:			100x30
 URxvt.cursorUnderline:		true
 URxvt.cursorBlink:		true
 URxvt.pointerBlank:		true
-URxvt.font: 		 	xft:Dejavu Sans Mono:Bold:size=9
-URxvt.boldFont:		 	xft:Dejavu Sans Mono:Bold:size=9
+URxvt.font: 		 	xft:Noto Mono:Bold:size=9
+URxvt.boldFont:		 	xft:Noto Mono:Bold:size=9
 URxvt.letterSpace:		-2
 URxvt.saveLines:		65535
 URxvt.utmpInhibit:		true
@@ -15,10 +15,10 @@ URxvt.perl-ext-common:		default,matcher
 URxvt.url-launcher:		/usr/bin/firefox
 URxvt.matcher.button:		3
 URxvt.scrollBar:		false
-#URxvt.fading:			25
+URxvt.fading:			25
 URxvt.depth:			32
 *.foreground:			#bfbfbf
-*.background:			[75]#000000
+*.background:			[85]#000000
 *.cursorColor:			#00ff00
 *.color0:			#000000
 *.color8:			#808080
