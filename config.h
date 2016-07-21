@@ -2,15 +2,15 @@
 
 /* appearance */
 static const char *fonts[] = {
-	"Liberation Sans:size=10"
+	"Liberation Sans Narrow:pixelsize=15:antialias=true:autohint=true"
 };
-static const char dmenufont[]       = "Liberation Sans:size=10";
-static const char normbordercolor[] = "#657b83";
+static const char dmenufont[]       = "Liberation Sans Narrow:pixelsize=15:antialias=true:autohint=true";
+static const char normbordercolor[] = "#073642";
 static const char normbgcolor[]     = "#002b36";
-static const char normfgcolor[]     = "#93a1a1";
+static const char normfgcolor[]     = "#839496";
 static const char selbordercolor[]  = "#2aa198";
 static const char selbgcolor[]      = "#2aa198";
-static const char selfgcolor[]      = "#eeeeee";
+static const char selfgcolor[]      = "#000000";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 10;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -24,9 +24,13 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class              instance    title       tags mask     isfloating   monitor */
+	{ "Gimp",             NULL,       NULL,       0,            1,           -1 },
+	{ "Orage",            NULL,       NULL,       0,            1,           -1 },
+	{ "Lxappearance",     NULL,       NULL,       0,            1,           -1 },
+	{ "Galculator",       NULL,       NULL,       0,            1,           -1 },
+	{ "Xsensors",         NULL,       NULL,       0,            1,           -1 },
+	{ "Transmission-gtk", NULL,       NULL,       0,            1,           -1, },
 };
 
 /* layout(s) */
@@ -34,11 +38,8 @@ static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] *
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
-#include "gaplessgrid.c"
-
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[#]",      gaplessgrid },
 	{ "[T]",      tile },    /* first entry is default */
 	{ "[F]",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
@@ -84,10 +85,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return,  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,     view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,       killclient,     {0} },
-	{ MODKEY,                       XK_t,       setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_f,       setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_m,       setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,			XK_g,       setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_t,       setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_f,       setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_m,       setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,   setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,   togglefloating, {0} },
 	{ MODKEY,                       XK_0,       view,           {.ui = ~0 } },
@@ -124,4 +124,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
