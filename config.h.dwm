@@ -5,10 +5,9 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 12;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Liberation Sans:size=11" };
-static const char dmenufont[]       = "Liberation Sans:size=11";
+static const char *fonts[]          = { "Liberation Sans:size=10" };
 static const char col_gray1[]       = "#002b36";
-static const char col_gray2[]       = "#93a1a1";
+static const char col_gray2[]       = "#000000";
 static const char col_gray3[]       = "#93a1a1";
 static const char col_gray4[]       = "#000000";
 static const char col_cyan[]        = "#2aa198";
@@ -19,15 +18,16 @@ static const char *colors[SchemeLast][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "00", "01", "10", "11" };
+static const char *tags[] = { "00", "01", "10", "11", "web" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	/* class              instance    title       tags mask     isfloating   monitor */
+	{ "Gimp",             NULL,       NULL,       0,            1,           -1 },
+	{ "Firefox",          NULL,       NULL,       1 << 4,       0,           -1 },
         { "Orage",            NULL,       NULL,       0,            1,           -1 },
         { "Lxappearance",     NULL,       NULL,       0,            1,           -1 },
         { "Galculator",       NULL,       NULL,       0,            1,           -1 },
@@ -62,15 +62,22 @@ static const Layout layouts[] = {
 static char dmenumon[2]        = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]  = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]   = { "st", NULL };
-static const char *dimcmd[]    = { "xbacklight", "-1", NULL };
-static const char *brightcmd[] = { "xbacklight", "+1", NULL };
+/* static const char *dimcmd[]    = { "xbacklight", "-1", NULL };
+static const char *brightcmd[] = { "xbacklight", "+1", NULL }; */
+static const char *loudcmd[]   = { "amixer", "set", "-c0", "Master", "3dB+", "unmute", NULL };
+static const char *quietcmd[]  = { "amixer", "set", "-c0", "Master", "3dB-", "unmute", NULL };
+static const char *mutecmd[]   = { "amixer", "set", "-c0", "Master", "toggle", NULL };
+static const char *calcmd[]    = { "orage", NULL };
 
 static Key keys[] = {
 	/* modifier                     key         function        argument */
 	{ 0,                            XK_Menu,    spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,  spawn,          {.v = termcmd } },
-	{ 0,				0x1008ff03, spawn,          {.v = dimcmd } },
-	{ 0,                            0x1008ff02, spawn,          {.v = brightcmd } },
+/*	{ 0,				0x1008ff03, spawn,          {.v = dimcmd } },
+	{ 0,                            0x1008ff02, spawn,          {.v = brightcmd } }, */
+	{ 0,                            0x1008ff11, spawn,          {.v = quietcmd } },
+	{ 0,                            0x1008ff13, spawn,          {.v = loudcmd } },
+	{ 0,                            0x1008ff12, spawn,          {.v = mutecmd } },
 	{ MODKEY,                       XK_b,       togglebar,      {0} },
 	{ MODKEY,                       XK_j,       focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,       focusstack,     {.i = -1 } },
@@ -96,6 +103,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_2,                       1)
 	TAGKEYS(                        XK_3,                       2)
 	TAGKEYS(                        XK_4,                       3)
+	TAGKEYS(                        XK_5,                       4)
+	TAGKEYS(                        XK_6,                       5)
 	{ MODKEY|ShiftMask,             XK_q,       quit,           {0} },
 };
 
@@ -105,8 +114,10 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkWinTitle,          0,              Button1,        zoom,           {0} },
+	{ ClkWinTitle,          0,              Button3,        killclient,     {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button3,        spawn,          {.v = calcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
