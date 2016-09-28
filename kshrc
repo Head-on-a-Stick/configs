@@ -7,7 +7,7 @@ if [[ -z "$TMUX" ]]; then
 	fi
 fi
 alias sudo='/usr/bin/sudo'
-alias su='/usr/bin/su'
+alias su='/bin/su'
 alias passwd='/usr/bin/passwd'
 alias cp='cp -iv'
 alias mv='mv -iv'
