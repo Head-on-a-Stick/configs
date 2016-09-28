@@ -6,3 +6,9 @@ if [[ -z "$TMUX" ]]; then
 		tmux attach-session -t "$ID"
 	fi
 fi
+alias sudo='/usr/bin/sudo'
+alias su='/usr/bin/su'
+alias passwd='/usr/bin/passwd'
+alias cp='cp -iv'
+alias mv='mv -iv'
+set -o emacs
