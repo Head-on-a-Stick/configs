@@ -1,5 +1,5 @@
 if [[ -z "$TMUX" ]]; then
-	ID="`tmux ls 2>/dev/null | awk -F':' '!/attached/{print $1}' | head -n1`"
+	ID="$(tmux ls 2>/dev/null | awk -F':' '!/attached/{print $1}' | uniq)"
 	if [[ -z "$ID" ]]; then
 		tmux new-session
 	else
