@@ -13,3 +13,4 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias ls='ls --color'
 set -o emacs
+PS1="\w > " 
