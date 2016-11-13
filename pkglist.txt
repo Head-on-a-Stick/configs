@@ -1,9 +1,8 @@
 adwaita-icon-theme-3.22.0
+asciiquarium-1.1p1
 at-spi2-atk-2.22.0
 at-spi2-core-2.22.0
 atk-2.22.0
-autoconf-2.69p2
-automake-1.15p0
 bash-4.3.48
 bzip2-1.0.6p8
 cairo-1.14.6p1
@@ -17,7 +16,6 @@ dwm-6.1p0
 faba-icon-theme-4.0
 feh-2.18
 firefox-49.0.2
-gawk-4.1.3p1
 gcc-libs-4.9.4p2
 gdk-pixbuf-2.36.0
 gettext-0.19.8.1
@@ -26,7 +24,6 @@ giflib-5.1.4
 girara-0.2.6p0
 git-2.10.2
 glib2-2.50.2
-gmake-4.2.1
 gmp-5.0.2p3
 gnome-icon-theme-3.12.0p3
 gnome-icon-theme-symbolic-3.12.0p2
@@ -46,6 +43,7 @@ jbig2dec-0.11
 jpeg-1.5.1v0
 json-c-0.12p1
 lcms2-2.7
+libarchive-3.2.2
 libcroco-0.6.11
 libelf-0.8.13p3
 libexecinfo-0.3v0
@@ -63,8 +61,8 @@ libslang-2.2.4p2
 libwebp-0.5.1
 libxml-2.9.4
 lua-5.1.5p6
+lz4-0.131p1
 lzo2-2.09
-metaauto-1.0p1
 moka-icon-theme-5.0
 most-5.0.0ap0
 mozilla-dicts-en-GB-1.3p1
@@ -74,15 +72,19 @@ nspr-4.13.1
 nss-3.27
 oniguruma-5.9.6
 openjp2-2.1.2
+p5-Curses-1.32
 p5-Error-0.17024
+p5-Term-Animation-2.6
 pango-1.40.3
 pcre-8.38p0
 png-1.6.26
 pngcrush-1.8.7
+py-chardet-2.3.0
 py-setuptools-28.6.1v0
 python-2.7.12p1
 qdbm-1.8.78p0
 quirks-2.270
+ranger-1.7.2
 rsync-3.1.2p0
 scrot-0.8p3
 sdl2-2.0.4p0
@@ -96,4 +98,3 @@ tiff-4.0.6p1
 vim-8.0.0027-no_x11
 xdg-utils-1.1.1
 xz-5.2.2p0
-zip-3.0p0
