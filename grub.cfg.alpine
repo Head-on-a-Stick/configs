@@ -1,6 +1,13 @@
-set timeout=0
-menuentry 'Alpine' {
-	set root=(hd0)
-	linux /boot/vmlinuz-grsec root=/dev/sda rw modules=btrfs quiet elevator=noop
-	initrd /boot/initramfs-grsec
+menuentry 'OpenBSD-current' {
+	set root=(hd0,1)
+	chainloader +1
+}
+menuentry 'Alpine Linux' {
+	set root=(hd0,4)
+	linux /Alpine/boot/vmlinuz-grsec root=/dev/sda4 rootflags=subvol=Alpine rw modules=btrfs quiet zswap.enabled=1 elevator=noop
+	initrd /Alpine/boot/initramfs-grsec
+}
+menuentry 'FreeBSD 11.0' {
+	set root=(hd0,2)
+	chainloader +1
 }

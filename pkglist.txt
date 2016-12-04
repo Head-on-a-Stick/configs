@@ -1,0 +1,15 @@
+asciiquarium-1.1p1
+bash-4.3.48
+dwm-6.1p0
+feh-2.18
+firefox-49.0.2
+git-2.10.2
+iwn-firmware-5.11p1
+moka-icon-theme-5.0
+most-5.0.0ap0
+quirks-2.270
+ranger-1.7.2
+scrot-0.8p3
+speedtest-cli-0.3.4p0
+stone-soup-0.18.1
+vim-8.0.0027-no_x11
