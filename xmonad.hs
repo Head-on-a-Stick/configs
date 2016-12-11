@@ -13,19 +13,19 @@ import XMonad.Hooks.ManageHelpers
 baseConfig             = desktopConfig
 
 main                   = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey baseConfig {
-    terminal           = "urxvtc"
+    terminal           = "st"
   , modMask            = mod4Mask
   , borderWidth        = 3
   , normalBorderColor  = "#404040"
   , focusedBorderColor = "#4084d6"
-  , startupHook        = startupHook baseConfig <+> spawnOnce "urxvtd -q -f -o"
-                                                <+> spawnOnce "xset s 300 -dpms"
+  , startupHook        = startupHook baseConfig <+> spawnOnce "xset s 300 -dpms"
 						<+> spawnOnce "while true;do feh --randomize --bg-fill ~/Pictures/simplewallpapers;sleep 600;done &"
   , keys               = \c -> myKeys c `M.union` keys baseConfig c
   , layoutHook         = myLayoutHook
   , handleEventHook    = fullscreenEventHook
   , manageHook         = composeAll [ isFullscreen                    --> doFullFloat
                                     , className =? "Gimp"             --> doFloat
+                                    , className =? "Gimp-2.9"         --> doFloat
                                     , className =? "Kodi"             --> doFullFloat
                                     , className =? "Orage"            --> doFloat
 			            , className =? "Lxappearance"     --> doFloat
