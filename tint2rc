@@ -2,20 +2,20 @@
 # ID 1
 rounded = 0
 border_width = 1
-background_color = #e7e8eb 100
-border_color = #d5d6dc 100
+background_color = #cecece 100
+border_color = #888888 100
 
 # ID 2
 rounded = 1
 border_width = 0
-background_color = #E7e8eb 100
+background_color = #cecece 100
 border_color = #4084d6 100
 
 # ID 3
 rounded = 2
 border_width = 1
-background_color = #f5f6f7 100
-border_color = #d5d6dc 100
+background_color = #9b9b9b 100
+border_color = #888888 100
 
 # ID 4
 rounded = 2
@@ -67,7 +67,7 @@ task_urgent_icon_asb = 100 0 0
 task_iconified_icon_asb = 75 0 0
 
 # Fonts
-task_font = Cantarell 8
+task_font = Roboto Condensed, 10
 task_font_color = #000000 100
 task_active_font_color = #000000 100
 task_urgent_font_color = #000000 100
@@ -84,7 +84,7 @@ systray_icon_asb = 100 0 0
 
 # Clock
 time1_format = %H:%M
-time1_font = Oxyegn-Sans Sans-Book 15
+time1_font = Roboto Condensed, 18
 clock_font_color = #000000 100
 clock_tooltip = %A %d %B
 clock_padding = 1 1
@@ -96,8 +96,8 @@ tooltip_padding = 5 0
 tooltip_show_timeout = 1.2
 tooltip_hide_timeout = 0.3
 tooltip_background_id = 1
-tooltip_font = Sans 9
-tooltip_font_color = #5E5E5E 100
+tooltip_font = Roboto Condensed, 8
+tooltip_font_color = #444444 100
 
 # Mouse
 mouse_left = toggle_iconify
