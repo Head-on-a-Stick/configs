@@ -1,4 +1,4 @@
-if [[ -z "$TMUX" && "$TERM" != "linux" ]]; then
+if [[ -z "$TMUX" ]]; then
 	ID="$(tmux ls 2>/dev/null | awk -F':' '!/attached/{print $1}' | sed q)"
 	if [[ -z "$ID" ]]; then
 		tmux new-session
