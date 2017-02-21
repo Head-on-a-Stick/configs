@@ -1,7 +1,7 @@
-name = Fred
 default_manual_training = true
 autopickup_starting_ammo = true
 view_max_width = 81
 view_max_height = 71
 view_lock_x = true
 view_lock_y = true
+auto_butcher = true
