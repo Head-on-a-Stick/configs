@@ -12,11 +12,19 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
 alias ls='ls --color'
-alias ps-mem='su -c "ps-mem"'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-set -o emacs
+alias sluf='systemctl list-unit-files --state=enabled'
 
-PS1='\h: \w \[\033[01;31m\]${?#0}\[\033[00m\]\$ '
+case "$0" in
+        mksh*)
+                PS1=$'${HOSTNAME:=$(hostname)}: \$PWD \1\e[31m\1${?#0}\1\e[0m\1\$ '
+                ;;
+        ksh93)
+                PS1=$'${HOSTNAME:=$(hostname)}: \$PWD \1\e[31m\1${?#0}\1\e[0m\1\$ '
+                ;;
+        *)
+                PS1='\h: \w \[\033[01;31m\]${?#0}\[\033[00m\]\$ '
+esac
