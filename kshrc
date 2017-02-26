@@ -20,12 +20,8 @@ alias .....='cd ../../../..'
 alias sluf='systemctl list-unit-files --state=enabled'
 
 case "$0" in
-        mksh*)
-                PS1=$'${HOSTNAME:=$(hostname)}: \$PWD \1\e[31m\1${?#0}\1\e[0m\1\$ '
-                ;;
-        ksh93)
-                PS1=$'${HOSTNAME:=$(hostname)}: \$PWD \1\e[31m\1${?#0}\1\e[0m\1\$ '
-                ;;
+        mksh*|ksh93)
+                PS1=$'${HOSTNAME:=$(hostname)}: \$PWD \1\e[31m\1${?#0}\1\e[0m\1\$ ';;
         *)
                 PS1='\h: \w \[\033[01;31m\]${?#0}\[\033[00m\]\$ '
 esac
