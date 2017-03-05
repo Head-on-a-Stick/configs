@@ -16,4 +16,5 @@ if [ "$TERM" = "linux" ]; then
     printf "\e]PE34e2e2" # color14
     printf "\e]PFedeeec" # color15
 #   clear # removes artefacts but also removes /etc/{issue,motd}
+setterm --clear all --foreground green --bold on --store
 fi
