@@ -1,0 +1,7 @@
+post_install() {
+	update-bunsen-pepperflash --install
+}
+
+post_remove() {
+	rm -r /usr/lib/PepperFlash
+}
