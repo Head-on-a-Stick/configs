@@ -3,7 +3,7 @@
 pkgname=bunsen-pepperflash
 pkgdesc="Download script for Adobe's Pepper Flash Plugin with systemd .timer integration."
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 licence=('GPL')
 depends=('gcc-libs' 'glibc' 'bash' 'python3')
@@ -19,11 +19,11 @@ source=('get-adobe-flashver.py'
 	'bl-notify-failure@.service')
 
 package() {
-	install -Dm644 get-adobe-flashver.py "$pkgdir"/usr/lib/bunsen/pepperflash/get-adobe-flashver.py
-	install -Dm644 update-bunsen-pepperflash "$pkgdir"/usr/bin/update-bunsen-pepperflash
+	install -Dm755 get-adobe-flashver.py "$pkgdir"/usr/lib/bunsen/pepperflash/get-adobe-flashver.py
+	install -Dm755 update-bunsen-pepperflash "$pkgdir"/usr/bin/update-bunsen-pepperflash
 	install -Dm644 bunsen-pepperflash.service "$pkgdir"/usr/lib/systemd/system/bunsen-pepperflash.service
 	install -Dm644 bunsen-pepperflash.timer "$pkgdir"/usr/lib/systemd/system/bunsen-pepperflash.timer
-	install -Dm644 bl-notify-broadcast "$pkgdir"/usr/bin/bl-notify-broadcast
+	install -Dm755 bl-notify-broadcast "$pkgdir"/usr/bin/bl-notify-broadcast
 	install -Dm644 bl-notify-failure@.service "$pkgdir"/usr/lib/systemd/system/bl-notify-failure@.service
 }
 
