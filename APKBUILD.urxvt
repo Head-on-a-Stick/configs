@@ -4,7 +4,7 @@
 # Maintainer: William Pitcock <nenolod@dereferenced.org>
 pkgname=rxvt-unicode
 pkgver=9.22
-pkgrel=6
+pkgrel=7
 pkgdesc="rxvt fork with improved unicode support; no perl, no pixbuff and no transparency :P"
 arch=all
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
