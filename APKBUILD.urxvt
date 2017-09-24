@@ -27,7 +27,7 @@ build() {
 		--prefix=/usr \
 		--with-terminfo=/usr/share/terminfo \
 		--enable-256-color \
-		--disable-font-styles \
+		--enable-font-styles \
 		--disable-xim \
 		--enable-keepscrolling \
 		--enable-selectionscrolling \
