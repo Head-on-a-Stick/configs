@@ -5,7 +5,7 @@
 pkgname=rxvt-unicode
 pkgver=9.22
 pkgrel=6
-pkgdesc="rxvt fork with improved unicode support, pixbuff disabled"
+pkgdesc="rxvt fork with improved unicode support; no perl, no pixbuff and no transparency :P"
 arch=all
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
 license="GPL"
