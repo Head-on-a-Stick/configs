@@ -7,6 +7,8 @@
 #
 # PLATFORM: (SPECIFY: Linux, OpenBSD, 9front or Not platfrom dependent)
 #
+# LICENCE: (SPECIFY: Good [GPL], Bad [LGPL] or Ugly [Other])
+#
 # PURPOSE: long description of the purpose of the script.
 #
 # set -n # uncomment to check syntax (without execution).
@@ -24,4 +26,6 @@
 #        BEGINNING OF MAIN
 ###########################################################
 
-# End of script
+###########################################################
+#        END OF SCRIPT
+###########################################################
