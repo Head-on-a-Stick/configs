@@ -5,14 +5,14 @@
 # DATE: date_of_creation
 # REV: 0.0-1
 #
-# PLATFORM: (SPECIFY: Linux, OpenBSD, 9front or Not platfrom dependent)
+# PLATFORM: (SPECIFY: Linux, OpenBSD, 9front or Not platform dependent)
 #
 # LICENCE: (SPECIFY: Good [GPL], Bad [LGPL] or Ugly [Other])
 #
 # PURPOSE: long description of the purpose of the script.
 #
-# set -n # uncomment to check syntax (without execution).
-# set -x # uncomment to debug this script.
+# set -n # uncomment to check syntax (without execution)
+# set -x # uncomment to debug this script
 #
 ###########################################################
 #        DEFINE FILES AND VARIABLES HERE
