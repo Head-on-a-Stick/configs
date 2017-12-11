@@ -41,20 +41,20 @@ package() {
 	ln -s ksh "$pkgdir/usr/bin/pfksh"
 
 	# shcomp to compile ksh scripts into independent binaries
-	install -Dm 755 build/src/cmd/ksh93/shcomp "$pkgdir/usr/bin/shcomp"
+	install -Dm 755 "build/src/cmd/ksh93/shcomp" "$pkgdir/usr/bin/shcomp"
 
 	# libraries
-	install -Dm 755 build/src/lib/libast/libast.so "$pkgdir/usr/lib/libast.so"
-	install -Dm 755 build/src/lib/libcmd/libcmd.so "$pkgdir/usr/lib/libcmd.so"
-	install -Dm 755 build/src/lib/libcoshell/libcoshell.so "$pkgdir/usr/lib/libcoshell.so"
+	for l in lib{ast,cmd,coshell}; do
+		install -Dm 755 "build/src/lib/$l/${1}.so" "$pkgdir/usr/lib/${1}.so"
+	done
 
 	# sample configurstion file & functions
 	install -dm 755 "$pkgdir/usr/share/ksh93"
 	install -Dm 644 example.kshrc "$pkgdir/etc/skel/.kshrc"
-	install -Dm 644 dirs "$pkgdir/usr/share/ksh93/functions/dirs"
-	install -Dm 644 popd "$pkgdir/usr/share/ksh93/functions/popd"
-	install -Dm 644 pushd "$pkgdir/usr/share/ksh93/functions/pushd"
-
+	for f in dirs popd pushd; do
+		install -Dm 644 "$f" "$pkgdir/usr/share/ksh93/functions/$f"
+	done
+	
 	# dox
 	install -dm 755 "$pkgdir/usr/share/doc/ksh93"
 	install -Dm 644 LICENSE "$pkgdir/usr/share/doc/ksh93/copyright"
