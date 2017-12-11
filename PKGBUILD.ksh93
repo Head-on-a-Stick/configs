@@ -3,19 +3,23 @@
 pkgname='ksh93-git'
 _pkgname='ksh93'
 pkgver=r221.6d92543
-pkgrel=1
-pkgdesc="AT&T's Korn Shell ksh93 from ast-base (Meson build)"
+pkgrel=2
+pkgdesc="AT&T's KornShell (ksh93) from ast-base, Meson Build"
 arch=('x86_64')
 url='http://kornshell.org/'
 licence=('EPL' 'CPL')
 depends=('glibc')
 makedepends=('meson' 'git') # new Meson build system
+<<<<<<< HEAD
+conflicts=('ksh')
+=======
 conflicts=('ksh' 'ksh93')
 provides=('ksh')
+>>>>>>> 74a5948418c3085748597aa4a14811c13ec94334
 replaces=('pdksh')
 install='ksh93.install'
 source=('ksh93::git+http://github.com/att/ast#branch=master')
-md5sums=('SKIP')
+md5sums=('8830dd7bd291ce3395b2e83be9cefaae')
 
 pkgver() {
 	cd "$_pkgname"
@@ -30,9 +34,36 @@ build() {
 
 package() {
 	cd "$srcdir/$_pkgname"
+	# install ksh binary and symlinks for variants
 	install -Dm 755 build/src/cmd/ksh93/ksh "$pkgdir/usr/bin/ksh"
+	ln -s ksh "$pkgdir/usr/bin/rksh"
+	ln -s ksh "$pkgdir/usr/bin/rksh93"
+	ln -s ksh "$pkgdir/usr/bin/pfksh"
+
+	# shcomp to compile ksh scripts into independent binaries
 	install -Dm 755 build/src/cmd/ksh93/shcomp "$pkgdir/usr/bin/shcomp"
+
+	# libraries
 	install -Dm 755 build/src/lib/libast/libast.so "$pkgdir/usr/lib/libast.so"
 	install -Dm 755 build/src/lib/libcmd/libcmd.so "$pkgdir/usr/lib/libcmd.so"
 	install -Dm 755 build/src/lib/libcoshell/libcoshell.so "$pkgdir/usr/lib/libcoshell.so"
+
+	# sample configurstion file & functions
+	install -dm 755 "$pkgdir/usr/share/ksh93"
+	install -Dm 644 example.kshrc "$pkgdir/etc/skel/.kshrc"
+	install -Dm 644 dirs "$pkgdir/usr/share/ksh93/functions/dirs"
+	install -Dm 644 popd "$pkgdir/usr/share/ksh93/functions/popd"
+	install -Dm 644 pushd "$pkgdir/usr/share/ksh93/functions/pushd"
+
+	# dox
+	install -dm 755 "$pkgdir/usr/share/doc/ksh93"
+	install -Dm 644 LICENSE "$pkgdir/usr/share/doc/ksh93/copyright"
+	for d in COMPATIBILITY OBSOLETE PROMO.mm RELEASE{,88,93}; do
+	       install -Dm 644 "$d" "$pkgdir/usr/share/doc/ksh93/${d}.gz"
+	done
+
+	# man pages
+	for m in ksh shcomp; do
+		install -Dm 644 "${m}.1.gz" "$pkgdir/usr/share/man/man1/${m}1.gz"
+	done
 }
