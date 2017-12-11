@@ -10,12 +10,8 @@ url='http://kornshell.org/'
 licence=('EPL' 'CPL')
 depends=('glibc')
 makedepends=('meson' 'git') # new Meson build system
-<<<<<<< HEAD
-conflicts=('ksh')
-=======
 conflicts=('ksh' 'ksh93')
 provides=('ksh')
->>>>>>> 74a5948418c3085748597aa4a14811c13ec94334
 replaces=('pdksh')
 install='ksh93.install'
 source=('ksh93::git+http://github.com/att/ast#branch=master')
