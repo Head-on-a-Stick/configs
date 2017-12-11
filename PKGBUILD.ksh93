@@ -1,0 +1,37 @@
+# Maintainer: Head_on_a_Stick <matthew.t.hoare dot gmail at com>
+
+pkgname='ksh93-git'
+_pkgname='ksh93'
+pkgver=r221.6d92543
+pkgrel=1
+pkgdesc="AT&T's Korn Shell ksh93 from ast-base (Meson build)"
+arch=('x86_64')
+url='http://kornshell.org/'
+licence=('EPL' 'CPL')
+depends=('glibc')
+makedepends=('meson') # new Meson build system
+conflicts=('ksh')
+replaces=('pdksh')
+install='ksh93.install'
+source=('ksh93::git+http://github.com/att/ast#branch=master')
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "$srcdir/$_pkgname"
+	meson build
+	ninja -C build
+}
+
+package() {
+	cd "$srcdir/$_pkgname"
+	install -Dm 755 build/src/cmd/ksh93/ksh "$pkgdir/usr/bin/ksh"
+	install -Dm 755 build/src/cmd/ksh93/shcomp "$pkgdir/usr/bin/shcomp"
+	install -Dm 755 build/src/lib/libast/libast.so "$pkgdir/usr/lib/libast.so"
+	install -Dm 755 build/src/lib/libcmd/libcmd.so "$pkgdir/usr/lib/libcmd.so"
+	install -Dm 755 build/src/lib/libcoshell/libcoshell.so "$pkgdir/usr/lib/libcoshell.so"
+}
