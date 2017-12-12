@@ -41,10 +41,10 @@ package() {
 
 	# libraries
 	for l in lib{ast,cmd,coshell}; do
-		install -Dm 755 "build/src/lib/$l/${1}.so" "$pkgdir/usr/lib/${1}.so"
+		install -Dm 755 "build/src/lib/$l/${l}.so" "$pkgdir/usr/lib/${l}.so"
 	done
 
-	# sample configurstion file & functions
+	# sample configuration file & functions
 	install -dm 755 "$pkgdir/usr/share/ksh93"
 	install -Dm 644 example.kshrc "$pkgdir/etc/skel/.kshrc"
 	for f in dirs popd pushd; do
