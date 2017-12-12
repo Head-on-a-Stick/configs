@@ -3,7 +3,7 @@
 pkgname='ksh93-git'
 _pkgname='ksh93'
 pkgver=r221.6d92543
-pkgrel=2
+pkgrel=1
 pkgdesc="AT&T's KornShell (ksh93) from ast-base, Meson Build"
 arch=('x86_64')
 url='http://kornshell.org/'
@@ -60,6 +60,7 @@ package() {
 	cd "$srcdir/$_pkgname"
 	# install ksh binary and symlinks for variants
 	install -Dm 755 build/src/cmd/ksh93/ksh "$pkgdir/usr/bin/ksh"
+	
 	local _exe
 	for _exe in 'ksh93' 'rksh' 'pfksh'; do
 		ln -sf 'ksh' "$pkgdir/usr/bin/$_exe"
@@ -77,22 +78,23 @@ package() {
 	# sample configuration file & functions
 	install -dm 755 "$pkgdir/usr/share/ksh"
 	install -Dm 644 example.kshrc "$pkgdir/etc/skel/.kshrc"
+
 	local _fun
 	for _fun in 'dirs' 'popd' 'pushd'; do
 		install -Dm 644 "$_fun" "$pkgdir/usr/share/ksh/functions/$_fun"
 	done
 	
-	# dox
-	install -dm 755 "$pkgdir/usr/share/doc/ksh"
+	# Licence, dox & man pages
+	install -dm 755 "$pkgdir/usr/share/doc/ksh"	
 	install -Dm 644 copyright "$pkgdir/usr/share/doc/ksh/copyright"
+
 	local _dox
 	for _dox in 'builtins' 'COMPATIBILITY' 'DESIGN' 'OBSOLETE' 'PROMO.mm' 'RELEASE88' 'RELEASE93'; do
-	       install -Dm 644 "$_dox" "$pkgdir/usr/share/doc/ksh/${_dox}.gz"
+	       install -Dm 644 "${_dox}.gz" "$pkgdir/usr/share/doc/ksh/${_dox}.gz"
 	done
 
-	# man pages
 	local _man
-	for _man in 'ksh' 'shcomp'; do
-		install -Dm 644 "${_man}.1.gz" "$pkgdir/usr/share/man/man1/${_man}.1.gz"
+	for _man in 'ksh.1.gz' 'shcomp.1.gz'; do
+		install -Dm 644 "$_man" "$pkgdir/usr/share/man/man1/$_man"
 	done
 }
