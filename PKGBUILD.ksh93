@@ -45,17 +45,17 @@ package() {
 	done
 
 	# sample configuration file & functions
-	install -dm 755 "$pkgdir/usr/share/ksh93"
+	install -dm 755 "$pkgdir/usr/share/ksh"
 	install -Dm 644 example.kshrc "$pkgdir/etc/skel/.kshrc"
 	for f in dirs popd pushd; do
-		install -Dm 644 "$f" "$pkgdir/usr/share/ksh93/functions/$f"
+		install -Dm 644 "$f" "$pkgdir/usr/share/ksh/functions/$f"
 	done
 	
 	# dox
-	install -dm 755 "$pkgdir/usr/share/doc/ksh93"
-	install -Dm 644 LICENSE "$pkgdir/usr/share/doc/ksh93/copyright"
+	install -dm 755 "$pkgdir/usr/share/doc/ksh"
+	install -Dm 644 LICENSE "$pkgdir/usr/share/doc/ksh/copyright"
 	for d in COMPATIBILITY OBSOLETE PROMO.mm RELEASE{,88,93}; do
-	       install -Dm 644 "$d" "$pkgdir/usr/share/doc/ksh93/${d}.gz"
+	       install -Dm 644 "$d" "$pkgdir/usr/share/doc/ksh/${d}.gz"
 	done
 
 	# man pages
