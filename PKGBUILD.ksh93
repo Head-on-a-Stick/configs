@@ -14,8 +14,36 @@ conflicts=('ksh' 'ksh93')
 provides=('ksh')
 replaces=('pdksh')
 install='ksh93.install'
-source=('ksh93::git+http://github.com/att/ast#branch=master')
-md5sums=('8830dd7bd291ce3395b2e83be9cefaae')
+source=('ksh93::git+http://github.com/att/ast#branch=master'
+'example.kshrc'
+'builtins.gz'
+'DESIGN.gz'
+'dirs'
+'popd'
+'pushd'
+'copyright'
+'COMPATIBILITY.gz'
+'OBSOLETE.gz'
+'PROMO.mm.gz'
+'RELEASE88.gz'
+'RELEASE93.gz'
+'ksh.1.gz'
+'shcomp.1.gz')
+md5sums=('0cd191dff62105a26c9e18cc913d7ca72578975c83bbb6639db936a43c0c514bed37cab461386b5593f03628376be4bfa9e05092f53f67871896718616087301'
+'aeb54cb5ec944628ab64a692d364cab14bbc312c1a892b3692058f7f7b1cf72c95a6bfb4a95ffc3c4ddfb8f8ca4d17707023108d5504f912cb3ceb9e8d4da6b3'
+'12a01dec78ad422a9ee450902e0e9981627278dc4a65bb982905d5885c7cd127fc5e8f835a3895fa8e61340865cf7237cd73df30315e368578f581fd4b0035d9'
+'07af3a31253e399f94c2a58917ae93476b385a766352140bc18c773f1dc0f3cbd0f672e28d4ddcd6759b278e40ef4af5fa03cbda3b6054ea06d51d68d4b4542d'
+'48912044f400973c238681855113993cd35ed7dc91c9d07bb7366c381e917cc25a6e9b9598b24cb99a6c5c5b794a9d82922f58a9c83b08d13a6a3b6f36043731'
+'49cb18a7bc56963d68f0cc5daa9e760de0bf3be10efdfd405fb45f7c0b77eae878d162d38c98bdf67fd122be0db6a6594818da0645263f6894fa1d80a412b7b4'
+'49cb18a7bc56963d68f0cc5daa9e760de0bf3be10efdfd405fb45f7c0b77eae878d162d38c98bdf67fd122be0db6a6594818da0645263f6894fa1d80a412b7b4'
+'ceea9d91030730ba1da0f66f7180d7a59d86fe4d0fc525ee816d8c491786214b6eb03480c0b958b51240d10b67d3ac090d00d352f1d9571f8f56e8580d5e7e53'
+'b7b293314367d54e3a5715ba79912f88054d03fa4f24ee020ce9d2e6fb9e16446bc151ec61493010a820926da972ed8b5cdc31163b5981ffe860cabf37d5ae05'
+'3c3f7995072a0b2328aeba3f00bfaa361b12280f9a2ec76dc40ab4b4f8a4cab989ae0e55f89ca9618d18d1d078ce262c22925db3e5fbc0e0c0a058f346c2cab9'
+'b1918261cf3d7013b3ce337639b6a8d0bd8ed594b0072755865131aa810afe1fcfe6872d4ba6e111f4d6e940c2c6f2b8a2f3b5e9f6625db42f8a7c4b83a41630'
+'472f3823780db506f72f6a07ca89551aa7945b5d78c0103efa2c5f5471d62522f5f7dcfd8a049398063cc0d375d874c30b8bf1e9a5ff183b8cbb68b818127d1a'
+'265236afc129a5357d6c226d04e0531406e9b1240bc0702a517328fde74820eb47477b547fc20a09aae98e205f9b815a849f7826a8caea0a8a59f91571690967'
+'2bb1b9d0a589cdc7b2fcb952e5fe32ea9a9e86b7f0e8592393a63f6e4750a19e4e62c45a12a22355d99c77706bb235d8e882f27380e507414db8f194bb8b54f6'
+'f5e6f817c7efb8126262087c3a4832fc1ee45c8ad5d888bdc64d32ce9c954c3b024e78521a45ce45c0aecbae2bb232439e71cbfb85280499e41ca967fa3436ba')
 
 pkgver() {
 	cd "$_pkgname"
@@ -32,34 +60,39 @@ package() {
 	cd "$srcdir/$_pkgname"
 	# install ksh binary and symlinks for variants
 	install -Dm 755 build/src/cmd/ksh93/ksh "$pkgdir/usr/bin/ksh"
-	ln -s ksh "$pkgdir/usr/bin/rksh"
-	ln -s ksh "$pkgdir/usr/bin/rksh93"
-	ln -s ksh "$pkgdir/usr/bin/pfksh"
+	local _exe
+	for _exe in 'ksh93' 'rksh' 'pfksh'; do
+		ln -sf 'ksh' "$pkgdir/usr/bin/$_exe"
+	done
 
 	# shcomp to compile ksh scripts into independent binaries
-	install -Dm 755 "build/src/cmd/ksh93/shcomp" "$pkgdir/usr/bin/shcomp"
+	install -Dm 755 build/src/cmd/ksh93/shcomp "$pkgdir/usr/bin/shcomp"
 
 	# libraries
-	for l in lib{ast,cmd,coshell}; do
-		install -Dm 755 "build/src/lib/$l/${l}.so" "$pkgdir/usr/lib/${l}.so"
+	local _lib
+	for _lib in 'libast' 'libcmd' 'libcoshell'; do
+		install -Dm 755 "build/src/lib/$_lib/${_lib}.so" "$pkgdir/usr/lib/${_lib}.so"
 	done
 
 	# sample configuration file & functions
 	install -dm 755 "$pkgdir/usr/share/ksh"
 	install -Dm 644 example.kshrc "$pkgdir/etc/skel/.kshrc"
-	for f in dirs popd pushd; do
-		install -Dm 644 "$f" "$pkgdir/usr/share/ksh/functions/$f"
+	local _fun
+	for _fun in 'dirs' 'popd' 'pushd'; do
+		install -Dm 644 "$_fun" "$pkgdir/usr/share/ksh/functions/$_fun"
 	done
 	
 	# dox
 	install -dm 755 "$pkgdir/usr/share/doc/ksh"
-	install -Dm 644 LICENSE "$pkgdir/usr/share/doc/ksh/copyright"
-	for d in COMPATIBILITY OBSOLETE PROMO.mm RELEASE{,88,93}; do
-	       install -Dm 644 "$d" "$pkgdir/usr/share/doc/ksh/${d}.gz"
+	install -Dm 644 copyright "$pkgdir/usr/share/doc/ksh/copyright"
+	local _dox
+	for _dox in 'builtins' 'COMPATIBILITY' 'DESIGN' 'OBSOLETE' 'PROMO.mm' 'RELEASE88' 'RELEASE93'; do
+	       install -Dm 644 "$_dox" "$pkgdir/usr/share/doc/ksh/${_dox}.gz"
 	done
 
 	# man pages
-	for m in ksh shcomp; do
-		install -Dm 644 "${m}.1.gz" "$pkgdir/usr/share/man/man1/${m}1.gz"
+	local _man
+	for _man in 'ksh' 'shcomp'; do
+		install -Dm 644 "${_man}.1.gz" "$pkgdir/usr/share/man/man1/${_man}.1.gz"
 	done
 }
