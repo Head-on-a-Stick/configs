@@ -14,7 +14,7 @@ conflicts=('ksh' 'ksh93')
 provides=('ksh')
 replaces=('pdksh')
 install='ksh93.install'
-source=('ksh93::git+http://github.com/att/ast#branch=master'
+source=("$_pkgname::git+http://github.com/att/ast#branch=master"
 'example.kshrc'
 'builtins.gz'
 'DESIGN.gz'
@@ -23,8 +23,8 @@ source=('ksh93::git+http://github.com/att/ast#branch=master'
 'pushd'
 'copyright'
 'COMPATIBILITY.gz'
-'OBSOLETE.gz'
-'PROMO.mm.gz'
+'OBSOLETE'
+'PROMO.gz'
 'RELEASE88.gz'
 'RELEASE93.gz'
 'ksh.1.gz'
@@ -77,6 +77,7 @@ package() {
 
 	# sample configuration file & functions
 	install -dm 755 "$pkgdir/usr/share/ksh"
+	install -dm 755 "$pkgdir/usr/share/ksh/functions"
 	install -Dm 644 example.kshrc "$pkgdir/etc/skel/.kshrc"
 
 	local _fun
@@ -87,9 +88,10 @@ package() {
 	# Licence, dox & man pages
 	install -dm 755 "$pkgdir/usr/share/doc/ksh"	
 	install -Dm 644 copyright "$pkgdir/usr/share/doc/ksh/copyright"
+	install -Dm 644 OBSOLETE "$pkgdir/usr/share/doc/ksh/OBSOLETE"
 
 	local _dox
-	for _dox in 'builtins' 'COMPATIBILITY' 'DESIGN' 'OBSOLETE' 'PROMO.mm' 'RELEASE88' 'RELEASE93'; do
+	for _dox in 'builtins' 'COMPATIBILITY' 'DESIGN' 'PROMO' 'RELEASE88' 'RELEASE93'; do
 	       install -Dm 644 "${_dox}.gz" "$pkgdir/usr/share/doc/ksh/${_dox}.gz"
 	done
 
