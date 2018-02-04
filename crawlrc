@@ -5,3 +5,5 @@ view_max_height = 71
 view_lock_x = true
 view_lock_y = true
 auto_butcher = true
+hp_warning = 25
+hp_color = 75:yellow, 50:red
