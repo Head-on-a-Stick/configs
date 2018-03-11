@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 2017 Matthew T Hoare
+# Licensed under the GNU General Public License v3
+
+description="Restores the backlight level."
+
+savefile="/etc/backlight.save"
+sysfile="/sys/class/backlight/intel_backlight/brightness"
+
+start() {
+	ebegin "Restoring backlight level"
+	[ "$(cat $savefile)" == 0 ] && echo 100 > "$savefile"
+	cp "$savefile" "$sysfile"
+	eend "$?"
+}
+
+stop() {
+	ebegin "Saving backlight level"
+	cp "$sysfile" "$savefile"
+	eend "$?"
+}

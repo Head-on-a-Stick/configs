@@ -1,0 +1,28 @@
+table inet filter {
+	chain input {
+		type filter hook input priority 0; policy drop;
+		ct state established,related accept
+		iif "lo" accept
+		ct state invalid drop
+		icmp type echo-request ct state new accept
+		ip protocol udp ct state new jump UDP
+		tcp flags & (fin | syn | rst | ack) == syn ct state new jump TCP
+		ip protocol udp reject
+		ip protocol tcp reject with tcp reset
+		meta nfproto ipv4 counter packets 2 bytes 72 reject with icmp type prot-unreachable
+	}
+
+	chain forward {
+		type filter hook forward priority 0; policy drop;
+	}
+
+	chain output {
+		type filter hook output priority 0; policy accept;
+	}
+
+	chain TCP {
+	}
+
+	chain UDP {
+	}
+}

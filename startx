@@ -1,0 +1,294 @@
+#!/bin/bash
+#
+#    Custom startx script for BunsenLabs
+#    Hacked together by Head_on_a_Stick using the following script:
+#    bl-user-setup: a script to populate a new user's HOME directory
+#    using template files from /usr/share/bunsen/skel/
+#    Copyright: 2015-2017 John Crawley <john@bunsenlabs.org>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+readonly USER=${USER}
+readonly HOME=${HOME}
+readonly GROUP=$(id -ng "$USER")
+
+# Do not apply BL configs to the root account.
+if [[ "$USER" = root ]]; then
+    echo "$0: ERROR: USER is root, abort" >&2
+    exit 1
+fi
+
+# Check for the user home directory
+if [[ -z "$HOME" || ! -d "$HOME" ]]; then
+    echo "$0: ERROR: user home directory <$HOME> is not set or does not exist." >&2
+    exit 1
+fi
+
+bkp_sfx="~$( date +%FT%T )~"
+
+# If setup already run, do nothing.
+if [[ ! -f "$HOME/.config/bunsen/bl-setup" ]]; then
+    rsync -rlb ${rs_opt-} --checksum --suffix="$bkp_sfx" --safe-links /usr/share/bunsen/skel/ "$HOME"
+    for i in "$HOME/.gtk-bookmarks" "$HOME/.config/nitrogen/nitrogen.cfg"
+    do
+        [[ -f "${i}.template" ]] || continue
+        sed --in-place "s|%USERHOME%|$HOME|g" "${i}.template"
+        if [[ -f "$i" ]]
+        then
+            if diff -BEbZ "$i" "${i}.template" >/dev/null
+            then
+                rm "${i}.template"
+            else
+                mv "$i" "${i}${bkp_sfx}"
+                mv "${i}.template" "$i"
+            fi
+        else
+            mv "${i}.template" "$i"
+        fi
+    done
+
+    ln -sTf /usr/share/images/bunsen/wallpapers "$HOME/Pictures/wallpapers/bunsen"
+
+    mkdir -p "$HOME/.config/bunsen" # this should already exist
+    touch "$HOME/.config/bunsen/bl-setup"
+
+    chown -R "$USER":"$GROUP" "$HOME"
+fi
+
+unset DBUS_SESSION_BUS_ADDRESS
+unset SESSION_MANAGER
+userclientrc=$HOME/.xinitrc
+sysclientrc=/etc/X11/xinit/xinitrc
+
+userserverrc=$HOME/.xserverrc
+sysserverrc=/etc/X11/xinit/xserverrc
+defaultclient=xterm
+defaultserver=/usr/bin/X
+defaultclientargs=""
+defaultserverargs=""
+defaultdisplay=":0"
+clientargs=""
+serverargs=""
+vtarg=""
+enable_xauth=1
+
+
+# Automatically determine an unused $DISPLAY
+d=0
+while true ; do
+    [ -e /tmp/.X$d-lock ] || break
+    d=$(($d + 1))
+done
+defaultdisplay=":$d"
+unset d
+
+whoseargs="client"
+while [ x"$1" != x ]; do
+    case "$1" in
+    # '' required to prevent cpp from treating "/*" as a C comment.
+    /''*|\./''*)
+ if [ "$whoseargs" = "client" ]; then
+     if [ x"$client" = x ] && [ x"$clientargs" = x ]; then
+  client="$1"
+     else
+  clientargs="$clientargs $1"
+     fi
+ else
+     if [ x"$server" = x ] && [ x"$serverargs" = x ]; then
+  server="$1"
+     else
+  serverargs="$serverargs $1"
+     fi
+ fi
+ ;;
+    --)
+ whoseargs="server"
+ ;;
+    *)
+ if [ "$whoseargs" = "client" ]; then
+     clientargs="$clientargs $1"
+ else
+     # display must be the FIRST server argument
+     if [ x"$serverargs" = x ] && \
+   expr "$1" : ':[0-9][0-9]*$' > /dev/null 2>&1; then
+  display="$1"
+     else
+  serverargs="$serverargs $1"
+     fi
+ fi
+ ;;
+    esac
+    shift
+done
+
+# process client arguments
+if [ x"$client" = x ]; then
+    client=$defaultclient
+
+    # For compatibility reasons, only use startxrc if there were no client command line arguments
+    if [ x"$clientargs" = x ]; then
+        if [ -f "$userclientrc" ]; then
+            client=$userclientrc
+        elif [ -f "$sysclientrc" ]; then
+            client=$sysclientrc
+        fi
+    fi
+fi
+
+# if no client arguments, use defaults
+if [ x"$clientargs" = x ]; then
+    clientargs=$defaultclientargs
+fi
+
+# process server arguments
+if [ x"$server" = x ]; then
+    server=$defaultserver
+
+
+    # When starting the defaultserver start X on the current tty to avoid
+    # the startx session being seen as inactive:
+    # "https://bugzilla.redhat.com/show_bug.cgi?id=806491"
+    tty=$(tty)
+    if expr match "$tty" '^/dev/tty[0-9]\+$' > /dev/null; then
+        tty_num=$(echo "$tty" | grep -oE '[0-9]+$')
+        vtarg="vt$tty_num"
+    fi
+
+
+    # For compatibility reasons, only use xserverrc if there were no server command line arguments
+    if [ x"$serverargs" = x -a x"$display" = x ]; then
+ if [ -f "$userserverrc" ]; then
+     server=$userserverrc
+ elif [ -f "$sysserverrc" ]; then
+     server=$sysserverrc
+ fi
+    fi
+fi
+
+# if no server arguments, use defaults
+if [ x"$serverargs" = x ]; then
+    serverargs=$defaultserverargs
+fi
+
+# if no vt is specified add vtarg (which may be empty)
+have_vtarg="no"
+for i in $serverargs; do
+    if expr match "$i" '^vt[0-9]\+$' > /dev/null; then
+        have_vtarg="yes"
+    fi
+done
+if [ "$have_vtarg" = "no" ]; then
+    serverargs="$serverargs $vtarg"
+fi
+
+# if no display, use default
+if [ x"$display" = x ]; then
+    display=$defaultdisplay
+fi
+
+if [ x"$enable_xauth" = x1 ] ; then
+    if [ x"$XAUTHORITY" = x ]; then
+        XAUTHORITY=$HOME/.Xauthority
+        export XAUTHORITY
+    fi
+
+    removelist=
+
+    # set up default Xauth info for this machine
+    case `uname` in
+    Linux*)
+        if [ -z "`hostname --version 2>&1 | grep GNU`" ]; then
+            hostname=`hostname -f`
+        else
+            hostname=`hostname`
+        fi
+        ;;
+    *)
+        hostname=`hostname`
+        ;;
+    esac
+
+    authdisplay=${display:-:0}
+
+    mcookie=`/usr/bin/mcookie`
+
+
+
+
+
+
+
+    if test x"$mcookie" = x; then
+        echo "Couldn't create cookie"
+        exit 1
+    fi
+    dummy=0
+
+    # create a file with auth information for the server. ':0' is a dummy.
+    xserverauthfile=`mktemp -p /tmp serverauth.XXXXXXXXXX`
+    trap "rm -f '$xserverauthfile'" HUP INT QUIT ILL TRAP KILL BUS TERM
+    xauth -q -f "$xserverauthfile" << EOF
+add :$dummy . $mcookie
+EOF
+
+
+
+
+    serverargs=${serverargs}" -auth "${xserverauthfile}
+
+
+    # now add the same credentials to the client authority file
+    # if '$displayname' already exists do not overwrite it as another
+    # server man need it. Add them to the '$xserverauthfile' instead.
+    for displayname in $authdisplay $hostname$authdisplay; do
+        authcookie=`xauth list "$displayname" \
+        | sed -n "s/.*$displayname[[:space:]*].*[[:space:]*]//p"` 2>/dev/null;
+        if [ "z${authcookie}" = "z" ] ; then
+            xauth -q << EOF
+add $displayname . $mcookie
+EOF
+        removelist="$displayname $removelist"
+        else
+            dummy=$(($dummy+1));
+            xauth -q -f "$xserverauthfile" << EOF
+add :$dummy . $authcookie
+EOF
+        fi
+    done
+fi
+
+
+
+
+xinit "$client" $clientargs -- "$server" $display $serverargs
+
+retval=$?
+
+if [ x"$enable_xauth" = x1 ] ; then
+    if [ x"$removelist" != x ]; then
+        xauth remove $removelist
+    fi
+    if [ x"$xserverauthfile" != x ]; then
+        rm -f "$xserverauthfile"
+    fi
+fi
+
+
+
+
+
+if command -v deallocvt > /dev/null 2>&1; then
+    deallocvt
+fi
+exit $retval
