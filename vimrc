@@ -1,7 +1,7 @@
 set number
 set smartcase
 set autoindent
-set nowrap
+set tabstop=8 softtabstop=0 expandtab shiftwidth=3 smarttab
 set incsearch
 set hlsearch
 set cursorline
@@ -16,7 +16,6 @@ filetype plugin indent on
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor="latex"
 set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
-colo elflord
 syntax on
 hi CursorLine	cterm=NONE	ctermbg=236	ctermfg=NONE
 hi LineNr	cterm=NONE	ctermbg=236	ctermfg=GREY
