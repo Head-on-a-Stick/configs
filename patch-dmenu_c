@@ -1,0 +1,11 @@
+--- dmenu.c.orig	Mon Apr  2 13:37:14 2018
++++ dmenu.c		Mon Apr  2 13:38:36 2018
+@@ -595,7 +595,7 @@
+ 	utf8 = XInternAtom(dpy, "UTF8_STRING", False);
+ 
+ 	/* calculate menu geometry */
+-	bh = drw->fonts->h + 2;
++	bh = drw->fonts->h + 4;
+ 	lines = MAX(lines, 0);
+ 	mh = (lines + 1) * bh;
+ #ifdef XINERAMA
