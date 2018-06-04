@@ -1,7 +1,7 @@
 set number
 set smartcase
 set autoindent
-set tabstop=8 softtabstop=0 expandtab shiftwidth=3 smarttab
+set tabstop=3 softtabstop=0 expandtab shiftwidth=3 smarttab
 set incsearch
 set hlsearch
 set cursorline
