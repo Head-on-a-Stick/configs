@@ -1,0 +1,20 @@
+# Maintainer: Matthew T Hoare <matthew.t.hoare@gmail.com>
+
+pkgname=ranger
+pkgver=1.9.2
+pkgrel=0
+pkgdesc="A vim-inspired file manager for the console"
+url="https://ranger.github.io/"
+arch="all"
+license="GPL3"
+depends="python"
+subpackages="${pkgname}-doc"
+source="https://${pkgname}.github.io/${pkgname}-${pkgver}.tar.gz"
+builddir="${srcdir}/${pkgname}-${pkgver}"
+
+package() {
+	cd "$builddir"
+   python setup.py -q install --root="${pkgdir}" --optimize=1
+}
+
+sha512sums="07f1fa59221588bf787a2d755205a11614e0c4afe4a5680e41d26a7d3e574eaf1cae2a648fb034de37b8d02bda3ae97882616b2999ada39bb01296a5883a5a0d  ranger-1.9.2.tar.gz"
