@@ -2,24 +2,28 @@
 
 pkgname=gotop
 pkgver=1.5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="A terminal based graphical activity monitor inspired by gtop and vtop"
 url="https://github.com/cjbassi/${pkgname}"
 makedepends="libc6-compat go"
 arch="x86_64 x86"
 license="AGPLv3"
-_gourl="github.com/cjbassi/${pkgname}"
+options="!check"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/cjbassi/${pkgname}/archive/${pkgver}.tar.gz"
+builddir="${srcdir}/${pkgname}-${pkgver}"
 
-build() {
-	GOPATH="$srcdir" go get -fix -v -x "$_gourl"
+prepare() {
+	default_prepare
 }
 
-check() {
-	GOPATH="${GOPATH}:${srcdir}" go test -v -x "$_gourl"
+build() {
+	cd "$buiddir"
+	go build
 }
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
-	install -p -m755 "${srcdir}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -p -m755 "${builddir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
+sha512sums="b73b68908f3d1709bcf204303806d729869c496dc2df1633b1dddd55b765c658f89591dc1a87c71d2ec8af20b0fa38a566ef52ad746fa53e3a80588164fa36b4  gotop-1.5.0.tar.gz"
