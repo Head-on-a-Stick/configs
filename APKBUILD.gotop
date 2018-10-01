@@ -1,0 +1,25 @@
+# Maintainer: Matthew T Hoare <matthew.t.hoare@gmail.com>
+
+pkgname=gotop
+pkgver=1.5.0
+pkgrel=0
+pkgdesc="A terminal based graphical activity monitor inspired by gtop and vtop"
+url="https://github.com/cjbassi/${pkgname}"
+makedepends="libc6-compat go"
+arch="x86_64 x86"
+license="AGPLv3"
+_gourl="github.com/cjbassi/${pkgname}"
+
+build() {
+	GOPATH="$srcdir" go get -fix -v -x "$_gourl"
+}
+
+check() {
+	GOPATH="${GOPATH}:${srcdir}" go test -v -x "$_gourl"
+}
+
+package() {
+	mkdir -p "${pkgdir}/usr/bin"
+	install -p -m755 "${srcdir}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+}
+
