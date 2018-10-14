@@ -34,6 +34,7 @@ paper-icon-theme
 pkglocatedb
 plan9port
 povray
+qt5ct
 quakespasm
 quirks
 ranger
