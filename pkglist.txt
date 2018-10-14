@@ -2,21 +2,21 @@ GraphicsMagick
 ansiweather
 asciiquarium
 blender
-checkbashims
+checkbashisms
 chromium
 cmatrix
 coreutils
 dash
 dmenu
 dosbox
-#dwm (custom package)
+dwm
 feh
 foobillard
 gimp
 git
 htop
 inconsolata-font
-inskscape
+inkscape
 intel-firmware
 iwn-firmware
 leafpad
@@ -43,6 +43,6 @@ slurm
 speedtest-cli
 vim
 w3m
-yquake
+yquake2
 zathura
 zathura-pdf-mupdf
