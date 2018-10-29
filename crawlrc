@@ -7,3 +7,4 @@ view_lock_y = true
 auto_butcher = true
 hp_warning = 25
 hp_color = 75:yellow, 50:red
+show_more = false
