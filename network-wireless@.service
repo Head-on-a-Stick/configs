@@ -1,22 +1,19 @@
 [Unit]
-Description=Wireless network connectivity (%i)
-Wants=network.target
-Before=network.target
-BindsTo=sys-subsystem-net-devices-%i.device
+Description=Wireless Network Service (%i)
+Requires=sys-subsystem-net-devices-%i.device
 After=sys-subsystem-net-devices-%i.device
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
 
-ExecStart=/usr/bin/ip l set %i up
-ExecStart=/usr/bin/wpa_supplicant -B -i %i -c /etc/wpa_supplicant/wpa_supplicant-%i.conf
-ExecStart=/usr/bin/ip a add 192.168.1.69/24 broadcast 192.168.1.255 dev %i
-ExecStart=/usr/bin/ip r add default via 192.168.1.254
+ExecStart=/sbin/ip l set %I up
+ExecStart=/sbin/wpa_supplicant -B -i%I -c/etc/wpa_supplicant/wpa_supplicant-%I.conf
+ExecStart=/sbin/ip a add 192.168.1.95/24 dev %I
+ExecStart=/sbin/ip r add default via 192.168.1.254
 
-ExecStop=/usr/bin/ip l set %i down
-ExecStop=/usr/bin/ip a flush %i
-ExecStop=/usr/bin/ip r flush %i
+ExecStop=/sbin/ip l set %I down
+ExecStop=/sbin/ip a flush %I
 
 [Install]
-WantedBy=multi-user.target
+Alias=multi-user.target.wants/network-wireless@%i.service
