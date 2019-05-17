@@ -7,9 +7,8 @@ After=sys-subsystem-net-devices-%i.device
 Type=oneshot
 RemainAfterExit=yes
 
-ExecStart=/sbin/ip l set %I up
 ExecStart=/sbin/wpa_supplicant -B -i%I -c/etc/wpa_supplicant/wpa_supplicant-%I.conf
-ExecStart=/sbin/ip a add 192.168.1.95/24 dev %I
+ExecStart=/sbin/ip a add 192.168.1.75/24 dev %I
 ExecStart=/sbin/ip r add default via 192.168.1.254
 
 ExecStop=/sbin/ip l set %I down
