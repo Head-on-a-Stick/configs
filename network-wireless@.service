@@ -1,18 +1,35 @@
 [Unit]
 Description=Wireless Network Service (%i)
+ConditionCapability=CAP_NET_ADMIN
+DefaultDependencies=no
 Requires=sys-subsystem-net-devices-%i.device
 After=sys-subsystem-net-devices-%i.device
+Before=network.target multi-user.target shutdown.target
+Conflicts=shutdown.target
+Wants=network.target
 
 [Service]
-Type=oneshot
-RemainAfterExit=yes
-
-ExecStart=/sbin/wpa_supplicant -B -i%I -c/etc/wpa_supplicant/wpa_supplicant-%I.conf
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_BROADCAST CAP_NET_RAW
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_BROADCAST CAP_NET_RAW
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectKernelModules=yes
+ProtectSystem=strict
+Restart=on-failure
+RestartSec=0
+RestrictAddressFamilies=AF_UNIX AF_NETLINK AF_INET AF_INET6 AF_PACKET
+RestrictNamespaces=yes
+RestrictRealtime=yes
+ExecStart=/sbin/wpa_supplicant -B -i%I -c/etc/wpa_supplicant/wpa_supplicant.conf
 ExecStart=/sbin/ip a add 192.168.1.75/24 dev %I
 ExecStart=/sbin/ip r add default via 192.168.1.254
-
 ExecStop=/sbin/ip l set %I down
 ExecStop=/sbin/ip a flush %I
+RemainAfterExit=yes
+Type=oneshot
 
 [Install]
-Alias=multi-user.target.wants/network-wireless@%i.service
+WantedBy=multi-user.target
