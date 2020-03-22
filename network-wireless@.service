@@ -11,11 +11,6 @@ Wants=network.target
 [Service]
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_BROADCAST CAP_NET_RAW
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_BROADCAST CAP_NET_RAW
-ExecStart=/sbin/wpa_supplicant -B -i%I -c/etc/wpa_supplicant/wpa_supplicant.conf
-ExecStart=/sbin/ip a add 192.168.1.75/24 dev %I
-ExecStart=/sbin/ip r add default via 192.168.1.254
-ExecStop=/sbin/ip l set %I down
-ExecStop=/sbin/ip a flush %I
 LockPersonality=yes
 MemoryDenyWriteExecute=yes
 NoNewPrivileges=yes
@@ -23,12 +18,18 @@ ProtectControlGroups=yes
 ProtectHome=yes
 ProtectKernelModules=yes
 ProtectSystem=strict
-RestartSec=0
 RestrictAddressFamilies=AF_UNIX AF_NETLINK AF_INET AF_INET6 AF_PACKET
 RestrictNamespaces=yes
 RestrictRealtime=yes
+ExecStart=!/sbin/wpa_supplicant -B -i%I -c/etc/wpa_supplicant/wpa_supplicant-%I.conf
+ExecStart=!/sbin/ip a add 192.168.0.23/24 dev %I
+ExecStart=!/sbin/ip r add default via 192.168.0.1
+ExecStop=!/sbin/ip l set %I down
+ExecStop=!/sbin/ip a flush %I
 RemainAfterExit=yes
 Type=oneshot
+DynamicUser=yes
+User=network-wireless
 
 [Install]
 WantedBy=multi-user.target
